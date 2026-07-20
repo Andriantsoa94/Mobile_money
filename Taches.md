@@ -58,7 +58,6 @@
 - [x] Fix affichage du type d'operation vide dans le tableau de bord (seed des types + idTypeOperation renseigne a l'insertion)
 - [x] Suppression des filtres dans l'historique client
 - [x] Style ajoute sur la page login
-- [ ] 
 
 
 ## Version 2
@@ -74,9 +73,14 @@
     - [ ] Affichage : Operateur , Montant
     - [ ] Fonction : sommeMontant(idOperateur) 
 
-### Cote Client
+### Cote Client (Andriantsoa)
 
 - [ ] Inclure un frais de retrait
+  - [ ] dans view
+    - [ ] ajout d'une input radio si ajoute frais
+      - si oui
+        - [ ] prendre la fonctoin frais()
+      - si non (rien)
 - [ ] Envoye multiple (Transfert)
     - [ ] Affichage  
         - [ ] Boutton pour ajouter un autre numero
