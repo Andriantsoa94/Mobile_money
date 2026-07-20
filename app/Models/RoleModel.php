@@ -17,4 +17,14 @@ class RoleModel extends Model
     {
         return $this->where('type', $type)->first();
     }
+
+    public function totalClients()
+    {
+        $userModel = new UserModel();
+        $roleClient = $this->findByType('client');
+        if ($roleClient) {
+            return $userModel->where('idrole', $roleClient['id'])->countAllResults();
+        }
+        return 0;
+    }
 }

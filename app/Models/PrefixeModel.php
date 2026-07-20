@@ -41,4 +41,12 @@ class PrefixeModel extends Model
 
         return isset($ligne['idoperateur']) ? (int) $ligne['idoperateur'] : null;
     }
+
+    public function findAllMe(){
+        return $this
+            ->select('prefixe.*, operateur.nom AS operateurNom')
+            ->join('operateur', 'operateur.id = prefixe.idoperateur', 'left')
+            ->orderBy('prefixe.numero', 'ASC')
+            ->find();
+    }
 }
