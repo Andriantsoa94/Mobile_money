@@ -18,6 +18,8 @@ $routes->group('client', ['filter' => 'role:client'], function ($routes) {
     $routes->post('retrait', 'Client\RetraitController::store');
     $routes->get('transfert', 'Client\TransfertController::index');
     $routes->post('transfert', 'Client\TransfertController::store');
+    $routes->get('transfert/multiple', 'Client\TransfertController::multiple');
+    $routes->post('transfert/multiple', 'Client\TransfertController::storeMultiple');
     $routes->get('historique', 'Client\HistoriqueController::index');
 });
 

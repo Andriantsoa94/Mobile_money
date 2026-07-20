@@ -36,6 +36,7 @@
         </div>
 
         <button type="button" class="btn" onclick="ouvrirModal('modalTransfert')">Transférer</button>
+        <a href="/client/transfert/multiple" class="btn btn-secondary">Envoyer à plusieurs numéros</a>
         <a href="/client" class="btn btn-secondary">Annuler</a>
     </form>
 

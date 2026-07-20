@@ -68,11 +68,9 @@ class TransfertController extends BaseController
         $gain    = (float) ($tranche['gain'] ?? 0);
 
         if ($inclureFrais === 1) {
-            // Le destinataire reçoit le montant saisi, le frais s'ajoute au débit de l'expéditeur.
             $montantEnvoye = $montantSaisi;
             $montantDebite = $montantSaisi + $frais;
         } else {
-            // Le frais est prélevé sur le montant saisi, le destinataire reçoit donc moins.
             $montantEnvoye = max(0, $montantSaisi - $frais);
             $montantDebite = $montantSaisi;
         }
@@ -99,5 +97,154 @@ class TransfertController extends BaseController
         ]);
 
         return redirect()->to('/client')->with('success', 'Transfert effectué avec succès.');
+    }
+
+    /**
+     * Formulaire de transfert vers plusieurs destinataires (jusqu'à 5).
+     */
+    public function multiple()
+    {
+        $idUser = session()->get('user_id');
+        $solde  = (new SoldeModel())->getValeur($idUser);
+
+        return view('client/transfertMultiple', [
+            'solde' => $solde,
+        ]);
+    }
+
+    /**
+     * Traite un envoi vers plusieurs destinataires en une seule soumission.
+     * Toutes les lignes sont validées avant que le moindre solde ne soit touché
+     * (validation multiple : format, préfixe, destinataire enregistré,
+     * même opérateur pour tous, solde suffisant pour le total).
+     */
+    public function storeMultiple()
+    {
+        $configModel      = new ConfigModel();
+        $prefixeModel     = new PrefixeModel();
+        $numeroModel      = new NumeroModel();
+        $soldeModel       = new SoldeModel();
+        $transactionModel = new TransactionModel();
+
+        $idUser        = session()->get('user_id');
+        $numeros       = $this->request->getPost('numero') ?? [];
+        $montants      = $this->request->getPost('montant') ?? [];
+        $inclureFrais  = (int) $this->request->getPost('frais');
+
+        $numeroSource      = $numeroModel->where('iduser', $idUser)->first();
+        $idOperateurSource = $numeroSource ? $prefixeModel->trouverOperateurParNumero($numeroSource['numero']) : null;
+
+        // 1) Ne garder que les lignes réellement remplies.
+        $lignes = [];
+        foreach ($numeros as $i => $numero) {
+            $numero  = trim((string) $numero);
+            $montant = (float) ($montants[$i] ?? 0);
+
+            if ($numero === '' && $montant <= 0) {
+                continue; // ligne vide, on l'ignore
+            }
+
+            $lignes[] = ['numero' => $numero, 'montant' => $montant];
+        }
+
+        if (empty($lignes)) {
+            return redirect()->to('/client/transfert/multiple')->withInput()->with('error', 'Veuillez renseigner au moins un destinataire.');
+        }
+
+        // 2) Valider chaque ligne (format, préfixe, destinataire, même opérateur).
+        $destinataires  = [];
+        $idOperateurRef = null;
+
+        foreach ($lignes as $n => $ligne) {
+            $numero  = $ligne['numero'];
+            $montant = $ligne['montant'];
+            $rang    = $n + 1;
+
+            if (! preg_match('/^[0-9]{10}$/', $numero)) {
+                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : numéro invalide (10 chiffres attendus).");
+            }
+
+            if ($montant <= 0) {
+                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : montant invalide.");
+            }
+
+            if (! $prefixeModel->estValide(substr($numero, 0, 3))) {
+                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : préfixe opérateur non reconnu.");
+            }
+
+            $ligneDest = $numeroModel->findByNumero($numero);
+            if (! $ligneDest) {
+                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : numéro non enregistré.");
+            }
+
+            $idUserDest = (int) $ligneDest['iduser'];
+            if ($idUserDest === (int) $idUser) {
+                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : impossible de vous transférer à vous-même.");
+            }
+
+            $idOperateurDest = $prefixeModel->trouverOperateurParNumero($numero);
+
+            if ($idOperateurRef === null) {
+                $idOperateurRef = $idOperateurDest;
+            } elseif ($idOperateurDest !== $idOperateurRef) {
+                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : tous les numéros doivent être du même opérateur.");
+            }
+
+            $tranche = $configModel->trancheDe($montant);
+            $frais   = (float) ($tranche['frais'] ?? 0);
+            $gain    = (float) ($tranche['gain'] ?? 0);
+
+            if ($inclureFrais === 1) {
+                $montantEnvoye = $montant;
+                $montantDebite = $montant + $frais;
+            } else {
+                $montantEnvoye = max(0, $montant - $frais);
+                $montantDebite = $montant;
+            }
+
+            $destinataires[] = [
+                'idUserDest'     => $idUserDest,
+                'montantSaisi'   => $montant,
+                'montantDebite'  => $montantDebite,
+                'montantEnvoye'  => $montantEnvoye,
+                'frais'          => $frais,
+                'gain'           => $gain,
+            ];
+        }
+
+        // 3) Vérifier que le solde couvre le total AVANT de toucher quoi que ce soit.
+        $totalDebite = array_sum(array_column($destinataires, 'montantDebite'));
+
+        if (! $soldeModel->soldeSuffisant($idUser, $totalDebite)) {
+            return redirect()->to('/client/transfert/multiple')->withInput()->with('error', 'Solde insuffisant pour couvrir l\'ensemble des transferts (' . number_format($totalDebite, 0, ',', ' ') . ' Ar).');
+        }
+
+        $typeTransfert = (new TypeOperationModel())->where('nom', 'Transfert')->first();
+
+        // 4) Exécuter tous les transferts (annulés ensemble en cas d'échec).
+        try {
+            foreach ($destinataires as $destinataire) {
+                $soldeModel->transferer(
+                    $idUser,
+                    $destinataire['idUserDest'],
+                    $destinataire['montantDebite'],
+                    $destinataire['montantEnvoye']
+                );
+
+                $transactionModel->insert([
+                    'idUser'          => $idUser,
+                    'idOperateur'     => $idOperateurSource,
+                    'idTypeOperation' => $typeTransfert['id'] ?? null,
+                    'valeur'          => $destinataire['montantSaisi'],
+                    'frais'           => $destinataire['frais'],
+                    'gain'            => $destinataire['gain'],
+                ]);
+            }
+        } catch (RuntimeException $e) {
+            return redirect()->to('/client/transfert/multiple')->withInput()->with('error', $e->getMessage());
+        }
+
+        $nombre = count($destinataires);
+        return redirect()->to('/client')->with('success', $nombre . ' transfert(s) effectué(s) avec succès.');
     }
 }
