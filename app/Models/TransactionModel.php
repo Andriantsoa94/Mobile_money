@@ -13,30 +13,17 @@ class TransactionModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
 
-    // Colonnes : idUser (client), idOperateur, idTypeOperation
-    // (dépôt/retrait/transfert), gain (frais/commission perçu).
-    protected $allowedFields = ['idOperateur', 'idTypeOperation', 'gain', 'idUser'];
+    protected $allowedFields = ['idOperateur', 'idTypeOperation', 'gain', 'idUser' ,'valeur'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    /**
-     * "transaction" est un mot réservé SQLite (utilisé dans BEGIN/COMMIT
-     * TRANSACTION). Dès qu'on l'utilise dans une chaîne brute (jointure,
-     * fonction SUM/COUNT...), l'échappement automatique de CodeIgniter
-     * peut échouer et produire "near transaction: syntax error".
-     * On passe donc systématiquement par un alias ("tr") dans ces
-     * requêtes personnalisées plutôt que par le nom de table brut.
-     */
     private function builderAvecAlias()
     {
         return $this->db->table('transaction tr');
     }
 
-    /**
-     * Transactions d'un utilisateur, sans filtre, les plus récentes en premier.
-     */
     public function pourUtilisateur(int $idUser): array
     {
         return $this->builderAvecAlias()
@@ -48,10 +35,6 @@ class TransactionModel extends Model
             ->getResultArray();
     }
 
-    /**
-     * Les dernières transactions toutes confondues, avec le nom du client
-     * et le type d'opération (utilisé par le dashboard admin).
-     */
     public function dernieresAvecClient(int $limite = 8): array
     {
         return $this->builderAvecAlias()
@@ -64,9 +47,6 @@ class TransactionModel extends Model
             ->getResultArray();
     }
 
-    /**
-     * Nombre de transactions enregistrées à la date du jour.
-     */
     public function nombreAujourdhui(): int
     {
         return $this->builderAvecAlias()
@@ -74,10 +54,6 @@ class TransactionModel extends Model
             ->countAllResults();
     }
 
-    /**
-     * Total des gains sur une période (filtres optionnels dateDebut/dateFin,
-     * format Y-m-d).
-     */
     public function totalGains(array $filtres = []): float
     {
         $builder = $this->builderAvecAlias()->selectSum('tr.gain', 'total');
@@ -97,10 +73,6 @@ class TransactionModel extends Model
         return (float) ($ligne['total'] ?? 0);
     }
 
-    /**
-     * Gains agrégés par type d'opération sur une période.
-     * Retour : liste de ['typeNom', 'total', 'nombre'].
-     */
     public function gainsParType(array $filtres = []): array
     {
         $builder = $this->builderAvecAlias()

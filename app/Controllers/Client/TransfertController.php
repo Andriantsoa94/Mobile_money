@@ -81,6 +81,7 @@ class TransfertController extends BaseController
             'idOperateur'     => $idOperateur,
             'idTypeOperation' => $typeTransfert['id'] ?? null,
             'gain'            => $frais,
+            'valeur'          => $montant,
         ]);
 
         return redirect()->to('/client')->with('success', 'Transfert effectué avec succès.');

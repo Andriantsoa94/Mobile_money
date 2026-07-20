@@ -19,7 +19,7 @@
         <h3>Dernières transactions</h3>
         <ul>
             <?php foreach ($dernieresTransactions as $t): ?>
-                <li><?= esc($t['gain']) ?> Ar — <?= esc($t['created_at']) ?></li>
+                <li><?= esc($t['valeur']) ?> <?= esc($t['gain']) ?> Ar — <?= esc($t['created_at']) ?></li>
             <?php endforeach; ?>
         </ul>
     </div>

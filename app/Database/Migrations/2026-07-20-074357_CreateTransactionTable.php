@@ -40,7 +40,7 @@ class CreateTransactionTable extends Migration
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
 
-        $this->forge->addKey('id', true); // clé primaire
+        $this->forge->addKey('id', true);
         $this->forge->addForeignKey('idOperateur', 'operateur', 'id', 'CASCADE', 'SET NULL');
         $this->forge->addForeignKey('idUser', 'user', 'id', 'CASCADE', 'SET NULL');
         $this->forge->createTable('transaction');

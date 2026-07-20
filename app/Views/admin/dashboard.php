@@ -50,6 +50,7 @@
                         <tr>
                             <th>Client</th>
                             <th>Type</th>
+                            <th>Montant</th>
                             <th class="text-end">Gain</th>
                             <th>Date</th>
                         </tr>
@@ -59,6 +60,7 @@
                             <tr>
                                 <td><?= esc($t['clientNom'] ?? '—') ?></td>
                                 <td><?= esc($t['typeNom'] ?? '—') ?></td>
+                                <td><?= esc($t['valeur']) ?></td>
                                 <td class="text-end"><?= number_format((float) $t['gain'], 0, ',', ' ') ?> Ar</td>
                                 <td><?= esc($t['created_at']) ?></td>
                             </tr>
