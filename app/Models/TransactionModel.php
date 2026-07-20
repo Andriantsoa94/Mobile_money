@@ -14,9 +14,13 @@ class TransactionModel extends Model
     protected $protectFields    = true;
 
     // "valeur" = montant de l'operation, "frais" = paye par le client,
-    // "gain" = conserve par la plateforme. frais et gain sont
-    // independants (voir ConfigModel).
-    protected $allowedFields = ['idOperateur', 'idTypeOperation', 'valeur', 'frais', 'gain', 'idUser'];
+    // "gain" = conserve par la plateforme, "commission" = reversee a l'autre
+    // operateur quand le destinataire n'est pas chez nous, "idAutreOperateur"
+    // = operateur destinataire externe (null si transfert interne).
+    protected $allowedFields = [
+        'idOperateur', 'idTypeOperation', 'valeur', 'frais', 'gain',
+        'commission', 'idAutreOperateur', 'idUser',
+    ];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
@@ -96,18 +100,18 @@ class TransactionModel extends Model
         return $builder->get()->getResultArray();
     }
 
-    public function commissionAutreOperateur(){
-        
-        $builder = $this->builderAvecAlias()
-                ->select('autreOperateur.nom AS autreOperateurNom, SUM(tr.commission) AS total, COUNT(tr.id) AS nombre')
-                ->join('operateur AS autreOperateur', 'autreOperateur.id = tr.idAutreOperateur', 'left')
-                ->whereIn('autreOperateur.id', function($subQuery) {
-                    $subQuery->select('idoperateur')
-                            ->from('prefixe')
-                            ->where('appartenance', 0);
-                })
-                ->groupBy('tr.idAutreOperateur');
-
-        return $builder->get()->getResultArray();
+    /**
+     * Total des commissions reversees, regroupees par operateur externe
+     * (uniquement les transactions dirigees vers un autre operateur).
+     */
+    public function commissionAutreOperateur(): array
+    {
+        return $this->builderAvecAlias()
+            ->select('autreOperateur.nom AS autreOperateurNom, SUM(tr.commission) AS total, COUNT(tr.id) AS nombre')
+            ->join('operateur AS autreOperateur', 'autreOperateur.id = tr.idAutreOperateur', 'inner')
+            ->where('tr.commission >', 0)
+            ->groupBy('tr.idAutreOperateur')
+            ->get()
+            ->getResultArray();
     }
 }

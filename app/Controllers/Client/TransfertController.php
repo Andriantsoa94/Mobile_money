@@ -3,6 +3,7 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\BaseController;
+use App\Models\CommissionModel;
 use App\Models\ConfigModel;
 use App\Models\NumeroModel;
 use App\Models\PrefixeModel;
@@ -30,6 +31,7 @@ class TransfertController extends BaseController
         $numeroModel      = new NumeroModel();
         $soldeModel       = new SoldeModel();
         $transactionModel = new TransactionModel();
+        $commissionModel  = new CommissionModel();
 
         $idUser       = session()->get('user_id');
         $numeroDest   = trim((string) $this->request->getPost('numero'));
@@ -48,30 +50,43 @@ class TransfertController extends BaseController
             return redirect()->to('/client/transfert')->withInput()->with('error', 'Préfixe opérateur non reconnu pour ce numéro.');
         }
 
-        $ligneDest = $numeroModel->findByNumero($numeroDest);
-
-        if (! $ligneDest) {
-            return redirect()->to('/client/transfert')->withInput()->with('error', 'Numéro destinataire non enregistré.');
-        }
-
-        $idUserDest = (int) $ligneDest['iduser'];
-
-        if ($idUserDest === (int) $idUser) {
-            return redirect()->to('/client/transfert')->withInput()->with('error', 'Impossible de vous transférer à vous-même.');
-        }
-
         $numeroSource      = $numeroModel->where('iduser', $idUser)->first();
         $idOperateurSource = $numeroSource ? $prefixeModel->trouverOperateurParNumero($numeroSource['numero']) : null;
 
-        $tranche = $configModel->trancheDe($montantSaisi);
-        $frais   = (float) ($tranche['frais'] ?? 0);
-        $gain    = (float) ($tranche['gain'] ?? 0);
+        // Appartenance du numéro destinataire : chez nous ou autre opérateur ?
+        $estChezNous     = $prefixeModel->appartientANous($numeroDest);
+        $idOperateurDest = $prefixeModel->trouverOperateurParNumero($numeroDest);
 
+        $tranche    = $configModel->trancheDe($montantSaisi);
+        $frais      = (float) ($tranche['frais'] ?? 0);
+        $gain       = (float) ($tranche['gain'] ?? 0);
+        // Commission uniquement si le destinataire est chez un AUTRE opérateur.
+        $commission = $estChezNous ? 0.0 : $commissionModel->pourOperateur($idOperateurDest);
+
+        // Un transfert vers un autre opérateur ne peut pas créditer un solde interne :
+        // on l'enregistre comme sortie (montant + frais + commission débités).
+        if ($estChezNous) {
+            $ligneDest = $numeroModel->findByNumero($numeroDest);
+            if (! $ligneDest) {
+                return redirect()->to('/client/transfert')->withInput()->with('error', 'Numéro destinataire non enregistré.');
+            }
+
+            $idUserDest = (int) $ligneDest['iduser'];
+            if ($idUserDest === (int) $idUser) {
+                return redirect()->to('/client/transfert')->withInput()->with('error', 'Impossible de vous transférer à vous-même.');
+            }
+        } else {
+            $idUserDest = null;
+        }
+
+        // Calcul du débit :
+        //  - chez nous  : montant + frais (+0 commission)
+        //  - autre op.  : montant + frais + commission
         if ($inclureFrais === 1) {
             $montantEnvoye = $montantSaisi;
-            $montantDebite = $montantSaisi + $frais;
+            $montantDebite = $montantSaisi + $frais + $commission;
         } else {
-            $montantEnvoye = max(0, $montantSaisi - $frais);
+            $montantEnvoye = max(0, $montantSaisi - $frais - $commission);
             $montantDebite = $montantSaisi;
         }
 
@@ -82,41 +97,54 @@ class TransfertController extends BaseController
         $typeTransfert = (new TypeOperationModel())->where('nom', 'Transfert')->first();
 
         try {
-            $soldeModel->transferer($idUser, $idUserDest, $montantDebite, $montantEnvoye);
+            if ($estChezNous) {
+                $soldeModel->transferer($idUser, $idUserDest, $montantDebite, $montantEnvoye);
+            } else {
+                // Destinataire externe : uniquement débit du solde de l'expéditeur.
+                $soldeModel->retrait($idUser, $montantDebite);
+            }
         } catch (RuntimeException $e) {
             return redirect()->to('/client/transfert')->withInput()->with('error', $e->getMessage());
         }
 
         $transactionModel->insert([
-            'idUser'          => $idUser,
-            'idOperateur'     => $idOperateurSource,
-            'idTypeOperation' => $typeTransfert['id'] ?? null,
-            'valeur'          => $montantSaisi,
-            'frais'           => $frais,
-            'gain'            => $gain,
+            'idUser'           => $idUser,
+            'idOperateur'      => $idOperateurSource,
+            'idTypeOperation'  => $typeTransfert['id'] ?? null,
+            'valeur'           => $montantSaisi,
+            'frais'            => $frais,
+            'gain'             => $gain,
+            'commission'       => $commission,
+            'idAutreOperateur' => $estChezNous ? null : $idOperateurDest,
         ]);
 
         return redirect()->to('/client')->with('success', 'Transfert effectué avec succès.');
     }
 
     /**
-     * Formulaire de transfert vers plusieurs destinataires (jusqu'à 5).
+     * Formulaire de transfert vers plusieurs destinataires (nombre libre, ajout via JS).
      */
     public function multiple()
     {
         $idUser = session()->get('user_id');
         $solde  = (new SoldeModel())->getValeur($idUser);
 
+        // Table prefixe -> idOperateur pour la vérification JS côté client.
+        $prefixes = (new PrefixeModel())->findAll();
+        $prefixesOperateurs = [];
+        foreach ($prefixes as $p) {
+            $prefixesOperateurs[$p['numero']] = (int) $p['idoperateur'];
+        }
+
         return view('client/transfertMultiple', [
-            'solde' => $solde,
+            'solde'              => $solde,
+            'prefixesOperateurs' => $prefixesOperateurs,
         ]);
     }
 
     /**
      * Traite un envoi vers plusieurs destinataires en une seule soumission.
-     * Toutes les lignes sont validées avant que le moindre solde ne soit touché
-     * (validation multiple : format, préfixe, destinataire enregistré,
-     * même opérateur pour tous, solde suffisant pour le total).
+     * Toutes les lignes sont validées avant que le moindre solde ne soit touché.
      */
     public function storeMultiple()
     {
@@ -125,11 +153,12 @@ class TransfertController extends BaseController
         $numeroModel      = new NumeroModel();
         $soldeModel       = new SoldeModel();
         $transactionModel = new TransactionModel();
+        $commissionModel  = new CommissionModel();
 
-        $idUser        = session()->get('user_id');
-        $numeros       = $this->request->getPost('numero') ?? [];
-        $montants      = $this->request->getPost('montant') ?? [];
-        $inclureFrais  = (int) $this->request->getPost('frais');
+        $idUser       = session()->get('user_id');
+        $numeros      = $this->request->getPost('numero') ?? [];
+        $montants     = $this->request->getPost('montant') ?? [];
+        $inclureFrais = (int) $this->request->getPost('frais');
 
         $numeroSource      = $numeroModel->where('iduser', $idUser)->first();
         $idOperateurSource = $numeroSource ? $prefixeModel->trouverOperateurParNumero($numeroSource['numero']) : null;
@@ -141,7 +170,7 @@ class TransfertController extends BaseController
             $montant = (float) ($montants[$i] ?? 0);
 
             if ($numero === '' && $montant <= 0) {
-                continue; // ligne vide, on l'ignore
+                continue;
             }
 
             $lignes[] = ['numero' => $numero, 'montant' => $montant];
@@ -151,7 +180,7 @@ class TransfertController extends BaseController
             return redirect()->to('/client/transfert/multiple')->withInput()->with('error', 'Veuillez renseigner au moins un destinataire.');
         }
 
-        // 2) Valider chaque ligne (format, préfixe, destinataire, même opérateur).
+        // 2) Valider chaque ligne (format, préfixe, même opérateur pour tous).
         $destinataires  = [];
         $idOperateurRef = null;
 
@@ -172,16 +201,6 @@ class TransfertController extends BaseController
                 return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : préfixe opérateur non reconnu.");
             }
 
-            $ligneDest = $numeroModel->findByNumero($numero);
-            if (! $ligneDest) {
-                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : numéro non enregistré.");
-            }
-
-            $idUserDest = (int) $ligneDest['iduser'];
-            if ($idUserDest === (int) $idUser) {
-                return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : impossible de vous transférer à vous-même.");
-            }
-
             $idOperateurDest = $prefixeModel->trouverOperateurParNumero($numero);
 
             if ($idOperateurRef === null) {
@@ -190,25 +209,45 @@ class TransfertController extends BaseController
                 return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : tous les numéros doivent être du même opérateur.");
             }
 
-            $tranche = $configModel->trancheDe($montant);
-            $frais   = (float) ($tranche['frais'] ?? 0);
-            $gain    = (float) ($tranche['gain'] ?? 0);
+            $estChezNous = $prefixeModel->appartientANous($numero);
+
+            if ($estChezNous) {
+                $ligneDest = $numeroModel->findByNumero($numero);
+                if (! $ligneDest) {
+                    return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : numéro non enregistré.");
+                }
+
+                $idUserDest = (int) $ligneDest['iduser'];
+                if ($idUserDest === (int) $idUser) {
+                    return redirect()->to('/client/transfert/multiple')->withInput()->with('error', "Ligne {$rang} : impossible de vous transférer à vous-même.");
+                }
+            } else {
+                $idUserDest = null;
+            }
+
+            $tranche    = $configModel->trancheDe($montant);
+            $frais      = (float) ($tranche['frais'] ?? 0);
+            $gain       = (float) ($tranche['gain'] ?? 0);
+            $commission = $estChezNous ? 0.0 : $commissionModel->pourOperateur($idOperateurDest);
 
             if ($inclureFrais === 1) {
                 $montantEnvoye = $montant;
-                $montantDebite = $montant + $frais;
+                $montantDebite = $montant + $frais + $commission;
             } else {
-                $montantEnvoye = max(0, $montant - $frais);
+                $montantEnvoye = max(0, $montant - $frais - $commission);
                 $montantDebite = $montant;
             }
 
             $destinataires[] = [
-                'idUserDest'     => $idUserDest,
-                'montantSaisi'   => $montant,
-                'montantDebite'  => $montantDebite,
-                'montantEnvoye'  => $montantEnvoye,
-                'frais'          => $frais,
-                'gain'           => $gain,
+                'estChezNous'      => $estChezNous,
+                'idUserDest'       => $idUserDest,
+                'idOperateurDest'  => $idOperateurDest,
+                'montantSaisi'     => $montant,
+                'montantDebite'    => $montantDebite,
+                'montantEnvoye'    => $montantEnvoye,
+                'frais'            => $frais,
+                'gain'             => $gain,
+                'commission'       => $commission,
             ];
         }
 
@@ -221,23 +260,29 @@ class TransfertController extends BaseController
 
         $typeTransfert = (new TypeOperationModel())->where('nom', 'Transfert')->first();
 
-        // 4) Exécuter tous les transferts (annulés ensemble en cas d'échec).
+        // 4) Exécuter tous les transferts.
         try {
             foreach ($destinataires as $destinataire) {
-                $soldeModel->transferer(
-                    $idUser,
-                    $destinataire['idUserDest'],
-                    $destinataire['montantDebite'],
-                    $destinataire['montantEnvoye']
-                );
+                if ($destinataire['estChezNous']) {
+                    $soldeModel->transferer(
+                        $idUser,
+                        $destinataire['idUserDest'],
+                        $destinataire['montantDebite'],
+                        $destinataire['montantEnvoye']
+                    );
+                } else {
+                    $soldeModel->retrait($idUser, $destinataire['montantDebite']);
+                }
 
                 $transactionModel->insert([
-                    'idUser'          => $idUser,
-                    'idOperateur'     => $idOperateurSource,
-                    'idTypeOperation' => $typeTransfert['id'] ?? null,
-                    'valeur'          => $destinataire['montantSaisi'],
-                    'frais'           => $destinataire['frais'],
-                    'gain'            => $destinataire['gain'],
+                    'idUser'           => $idUser,
+                    'idOperateur'      => $idOperateurSource,
+                    'idTypeOperation'  => $typeTransfert['id'] ?? null,
+                    'valeur'           => $destinataire['montantSaisi'],
+                    'frais'            => $destinataire['frais'],
+                    'gain'             => $destinataire['gain'],
+                    'commission'       => $destinataire['commission'],
+                    'idAutreOperateur' => $destinataire['estChezNous'] ? null : $destinataire['idOperateurDest'],
                 ]);
             }
         } catch (RuntimeException $e) {
