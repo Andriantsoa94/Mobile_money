@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateRoleTable extends Migration
+class CreatePrefixeTable extends Migration
 {
     public function up()
     {
@@ -15,20 +15,27 @@ class CreateRoleTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'type' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
+            'numero' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '10,2',
+            ],
+            'idoperateur' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => true,
             ],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
 
         $this->forge->addKey('id', true); // clé primaire
-        $this->forge->createTable('role');
+        $this->forge->addForeignKey('idoperateur', 'operateur', 'id', 'CASCADE', 'SET NULL');
+        $this->forge->createTable('prefixe');
     }
 
     public function down()
     {
-        $this->forge->dropTable('role');
+        $this->forge->dropTable('prefixe');
     }
 }

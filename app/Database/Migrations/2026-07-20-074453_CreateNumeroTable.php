@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateConfigTable extends Migration
+class CreateNumeroTable extends Migration
 {
     public function up()
     {
@@ -15,28 +15,27 @@ class CreateConfigTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'min' => [
+            'numero' => [
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
             ],
-            'max' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2',
-            ],
-            'gain' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2',
+            'iduser' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => true,
             ],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
 
         $this->forge->addKey('id', true); // clé primaire
-        $this->forge->createTable('config');
+        $this->forge->addForeignKey('iduser', 'user', 'id', 'CASCADE', 'SET NULL');
+        $this->forge->createTable('numero');
     }
 
     public function down()
     {
-        $this->forge->dropTable('config');
+        $this->forge->dropTable('numero');
     }
 }

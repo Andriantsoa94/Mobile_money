@@ -17,7 +17,7 @@ class AdminUserSeeder extends Seeder
         ]);
 
         $this->db->table('user')->insertBatch([
-            ['nom' => 'Jean' , 'idrole' => 1],
+            ['nom' => 'Jean' , 'idrole' => 1 , 'CIN' => 1234567890],
         ]);
 
         $this->db->table('numero')->insertBatch([

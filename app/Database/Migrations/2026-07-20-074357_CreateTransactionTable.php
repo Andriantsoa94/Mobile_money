@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateSoldeTable extends Migration
+class CreateTransactionTable extends Migration
 {
     public function up()
     {
@@ -15,7 +15,13 @@ class CreateSoldeTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'value' => [
+            'idOperateur' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => true,
+            ],
+            'gain' => [
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
             ],
@@ -30,12 +36,13 @@ class CreateSoldeTable extends Migration
         ]);
 
         $this->forge->addKey('id', true); // clé primaire
+        $this->forge->addForeignKey('idOperateur', 'operateur', 'id', 'CASCADE', 'SET NULL');
         $this->forge->addForeignKey('idUser', 'user', 'id', 'CASCADE', 'SET NULL');
-        $this->forge->createTable('solde');
+        $this->forge->createTable('transaction');
     }
 
     public function down()
     {
-        $this->forge->dropTable('solde');
+        $this->forge->dropTable('transaction');
     }
 }
