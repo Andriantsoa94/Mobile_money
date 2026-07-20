@@ -5,8 +5,8 @@
 ### Base commune (à faire en tout premier, avant la répartition)
 
 - [ ] Setup projet (repo, structure app unique, connexion DB) (Andriantsoa)
-- [ ] Création du schéma de base (`user`, `prefixe`, `typeOperation`, `config`, `transaction`, `solde`) (Jean)
-- [ ] Seed du user admin (numéro + role `operateur` + password) (Jean)
+- [ ] Création du schéma de base (`user`, `prefixe`, `typeOperation`, `config`, `transaction`, `solde`) (Jean Pierre)
+- [ ] Seed du user admin (numéro + role `operateur` + password) (Jean Pierre)
 - [ ] Page Login unique (numéro de téléphone + branchement client/operateur) (Andriantsoa)
 - [ ] Middleware/guard de routing par `role` (Andriantsoa)
 
@@ -39,21 +39,21 @@
 
 ### Pages
 
-- [ ] Dashboard Opérateur (`/admin`) — cartes résumé, raccourcis (Jean)
-- [ ] Gestion des Préfixes (`/admin/prefixes`) — liste + CRUD (Jean)
-- [ ] Gestion des Types d'Opération (`/admin/types-operation`) — liste + toggle actif/inactif (Jean)
-- [ ] Configuration des Barèmes (`/admin/types-operation/:id/config`) — tranches min/max/gain (Jean)
-- [ ] Situation des Gains (`/admin/gains`) — filtres + tableau + total agrégé (Jean)
-- [ ] Situation des Comptes Clients (`/admin/clients`) — liste + recherche (Jean)
-- [ ] Détail Client (`/admin/clients/:id`) — infos, solde, historique complet (Jean)
+- [ ] Dashboard Opérateur (`/admin`) — cartes résumé, raccourcis (Jean Pierre)
+- [ ] Gestion des Préfixes (`/admin/prefixes`) — liste + CRUD (Jean Pierre)
+- [ ] Gestion des Types d'Opération (`/admin/types-operation`) — liste + toggle actif/inactif (Jean Pierre)
+- [ ] Configuration des Barèmes (`/admin/types-operation/:id/config`) — tranches min/max/gain (Jean Pierre)
+- [ ] Situation des Gains (`/admin/gains`) — filtres + tableau + total agrégé (Jean Pierre)
+- [ ] Situation des Comptes Clients (`/admin/clients`) — liste + recherche (Jean Pierre)
+- [ ] Détail Client (`/admin/clients/:id`) — infos, solde, historique complet (Jean Pierre)
 
 ### Logique / backend associé
 
-- [ ] CRUD préfixe (validation 033/037) (Jean)
-- [ ] CRUD type d'opération (Jean)
-- [ ] CRUD config barème par type d'opération (Jean)
-- [ ] Calcul et agrégation des gains (frais retrait/transfert) (Jean)
-- [ ] Fonction liste clients + solde (Jean)
+- [ ] CRUD préfixe (validation 033/037) (Jean Pierre)
+- [ ] CRUD type d'opération (Jean Pierre)
+- [ ] CRUD config barème par type d'opération (Jean Pierre)
+- [ ] Calcul et agrégation des gains (frais retrait/transfert) (Jean Pierre)
+- [ ] Fonction liste clients + solde (Jean Pierre)
 
 
 ## Priorisation (délai 13h — Tag v1)
@@ -61,7 +61,7 @@
 1. Base commune (les 5 points partagés)
 2. En parallèle :
     - Andriantsoa → Dashboard Client + Dépôt/Retrait/Transfert + Historique
-    - Jean → Dashboard Admin + Préfixes + Types d'opération + Config barème
+    - Jean Pierre → Dashboard Admin + Préfixes + Types d'opération + Config barème
 3. Si temps restant :
     - Andriantsoa → peaufinage UI / modal de confirmation
-    - Jean → Situation des gains + Situation comptes clients + Détail client
+    - Jean Pierre → Situation des gains + Situation comptes clients + Détail client
