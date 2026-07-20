@@ -58,3 +58,29 @@
 - [x] Fix affichage du type d'operation vide dans le tableau de bord (seed des types + idTypeOperation renseigne a l'insertion)
 - [x] Suppression des filtres dans l'historique client
 - [x] Style ajoute sur la page login
+- [ ] 
+
+
+## Version 2
+
+### Cote Operateur
+
+- [ ] Modification au niveau table prefixe : ajout d'un colonne appartenance (1 si moi sinon 0)
+- [ ] Creation de table : commission (idOperateur , pourcentage)
+- [ ] Dans la page Situation gain : Ajout d'autre Contenu : 
+    - [ ] affichage (Total des commissions)
+    - [ ] table (transaction (commission))
+- [ ] Page pour afficher les listes de montant a envoyer pour chaque client
+    - [ ] Affichage : Operateur , Montant
+    - [ ] Fonction : sommeMontant(idOperateur) 
+
+### Cote Client
+
+- [ ] Inclure un frais de retrait
+- [ ] Envoye multiple (Transfert)
+    - [ ] Affichage  
+        - [ ] Boutton pour ajouter un autre numero
+        - [ ] Fonction js qui va inserer une autre formulaire de numero et de montant
+        - [ ] Verification via js que les numeros sont le meme operateur 
+    - [ ] Backend : 
+        - [ ] Validation multiple

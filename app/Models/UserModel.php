@@ -45,4 +45,21 @@ class UserModel extends Model
 
         return $donnees;
     }
+
+    public function findByRole($idRole){
+
+        return $this->select('user.*, solde.value AS soldeValue, GROUP_CONCAT(numero.numero) AS numeros')
+            ->join('solde', 'solde.idUser = user.id', 'left')
+            ->join('numero', 'numero.iduser = user.id', 'left')
+            ->where('user.idrole', $idRole)
+            ->groupBy('user.id');
+    }
+
+    public function filtrer($builder,$recherche){
+        return $builder->groupStart()
+                ->like('user.nom', $recherche)
+                ->orLike('user.CIN', $recherche)
+                ->orLike('numero.numero', $recherche)
+                ->groupEnd();
+    }
 }

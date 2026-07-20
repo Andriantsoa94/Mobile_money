@@ -9,7 +9,8 @@ class ConfigController extends BaseController
 {
     public function index()
     {
-        $baremes = (new ConfigModel())->listeTriee();
+        $configModel = new ConfigModel();
+        $baremes = $configModel->listeTriee();
 
         return view('admin/configBareme', [
             'baremes' => $baremes,
@@ -25,6 +26,7 @@ class ConfigController extends BaseController
 
     public function creer()
     {
+        $configModel = new ConfigModel();
         $donnees = $this->donneesFormulaire();
 
         $erreur = $this->valider($donnees);
@@ -32,14 +34,15 @@ class ConfigController extends BaseController
             return redirect()->back()->withInput()->with('error', $erreur);
         }
 
-        (new ConfigModel())->insert($donnees);
+        $configModel->insert($donnees);
 
         return redirect()->to('/admin/config')->with('success', 'Tranche créée.');
     }
 
     public function modifier(int $id)
     {
-        $bareme = (new ConfigModel())->find($id);
+        $configModel = new ConfigModel();
+        $bareme = $configModel->find($id);
         if (! $bareme) {
             return redirect()->to('/admin/config')->with('error', 'Tranche introuvable.');
         }
@@ -51,21 +54,21 @@ class ConfigController extends BaseController
 
     public function mettreAJour(int $id)
     {
+        $configModel = new ConfigModel();
         $donnees = $this->donneesFormulaire();
-
         $erreur = $this->valider($donnees);
         if ($erreur !== null) {
             return redirect()->back()->withInput()->with('error', $erreur);
         }
-
-        (new ConfigModel())->update($id, $donnees);
+        $configModel->update($id, $donnees);
 
         return redirect()->to('/admin/config')->with('success', 'Tranche mise à jour.');
     }
 
     public function supprimer(int $id)
     {
-        (new ConfigModel())->delete($id);
+        $configModel = new ConfigModel();
+        $configModel->delete($id);
         return redirect()->to('/admin/config')->with('success', 'Tranche supprimée.');
     }
 
