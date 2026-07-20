@@ -8,6 +8,7 @@ use App\Models\NumeroModel;
 use App\Models\PrefixeModel;
 use App\Models\SoldeModel;
 use App\Models\TransactionModel;
+use App\Models\TypeOperationModel;
 use RuntimeException;
 
 class DepotController extends BaseController
@@ -34,6 +35,7 @@ class DepotController extends BaseController
         $numero      = (new NumeroModel())->where('iduser', $idUser)->first();
         $idOperateur = $numero ? (new PrefixeModel())->trouverOperateurParNumero($numero['numero']) : null;
         $frais       = (new ConfigModel())->calculerFrais($montant);
+        $typeDepot   = (new TypeOperationModel())->where('nom', 'Dépôt')->first();
 
         try {
             (new SoldeModel())->depot($idUser, $montant);
@@ -42,9 +44,10 @@ class DepotController extends BaseController
         }
 
         (new TransactionModel())->insert([
-            'idUser'      => $idUser,
-            'idOperateur' => $idOperateur,
-            'gain'        => $frais,
+            'idUser'          => $idUser,
+            'idOperateur'     => $idOperateur,
+            'idTypeOperation' => $typeDepot['id'] ?? null,
+            'gain'            => $frais,
         ]);
 
         return redirect()->to('/client')->with('success', 'Dépôt effectué avec succès.');

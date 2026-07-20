@@ -8,6 +8,7 @@ use App\Models\NumeroModel;
 use App\Models\PrefixeModel;
 use App\Models\SoldeModel;
 use App\Models\TransactionModel;
+use App\Models\TypeOperationModel;
 use RuntimeException;
 
 class TransfertController extends BaseController
@@ -24,9 +25,9 @@ class TransfertController extends BaseController
 
     public function store()
     {
-        $idUser         = session()->get('user_id');
-        $numeroDest     = trim((string) $this->request->getPost('numero'));
-        $montant        = (float) $this->request->getPost('montant');
+        $idUser     = session()->get('user_id');
+        $numeroDest = trim((string) $this->request->getPost('numero'));
+        $montant    = (float) $this->request->getPost('montant');
 
         if (! preg_match('/^[0-9]{10}$/', $numeroDest)) {
             return redirect()->to('/client/transfert')->withInput()->with('error', 'Numéro destinataire invalide (10 chiffres attendus).');
@@ -65,8 +66,9 @@ class TransfertController extends BaseController
             return redirect()->to('/client/transfert')->withInput()->with('error', 'Solde insuffisant pour ce transfert (montant + frais).');
         }
 
-        $numeroSource = $numeroModel->where('iduser', $idUser)->first();
-        $idOperateur  = $numeroSource ? $prefixeModel->trouverOperateurParNumero($numeroSource['numero']) : null;
+        $numeroSource  = $numeroModel->where('iduser', $idUser)->first();
+        $idOperateur   = $numeroSource ? $prefixeModel->trouverOperateurParNumero($numeroSource['numero']) : null;
+        $typeTransfert = (new TypeOperationModel())->where('nom', 'Transfert')->first();
 
         try {
             $soldeModel->transferer($idUser, $idUserDest, $montantDebite, $montant);
@@ -75,9 +77,10 @@ class TransfertController extends BaseController
         }
 
         (new TransactionModel())->insert([
-            'idUser'      => $idUser,
-            'idOperateur' => $idOperateur,
-            'gain'        => $frais,
+            'idUser'          => $idUser,
+            'idOperateur'     => $idOperateur,
+            'idTypeOperation' => $typeTransfert['id'] ?? null,
+            'gain'            => $frais,
         ]);
 
         return redirect()->to('/client')->with('success', 'Transfert effectué avec succès.');

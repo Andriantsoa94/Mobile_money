@@ -8,6 +8,7 @@ use App\Models\NumeroModel;
 use App\Models\PrefixeModel;
 use App\Models\SoldeModel;
 use App\Models\TransactionModel;
+use App\Models\TypeOperationModel;
 use RuntimeException;
 
 class RetraitController extends BaseController
@@ -43,6 +44,7 @@ class RetraitController extends BaseController
 
         $numero      = (new NumeroModel())->where('iduser', $idUser)->first();
         $idOperateur = $numero ? (new PrefixeModel())->trouverOperateurParNumero($numero['numero']) : null;
+        $typeRetrait = (new TypeOperationModel())->where('nom', 'Retrait')->first();
 
         try {
             $soldeModel->retrait($idUser, $totalDebite);
@@ -51,9 +53,10 @@ class RetraitController extends BaseController
         }
 
         (new TransactionModel())->insert([
-            'idUser'      => $idUser,
-            'idOperateur' => $idOperateur,
-            'gain'        => $frais,
+            'idUser'          => $idUser,
+            'idOperateur'     => $idOperateur,
+            'idTypeOperation' => $typeRetrait['id'] ?? null,
+            'gain'            => $frais,
         ]);
 
         return redirect()->to('/client')->with('success', 'Retrait effectué avec succès.');
