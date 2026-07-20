@@ -77,9 +77,9 @@
 
 - [ ] Inclure un frais de retrait
   - [ ] dans view
-    - [ ] ajout d'une input radio si ajoute frais
+    - [x] ajout d'une input radio si ajoute frais
       - si oui
-        - [ ] prendre la fonctoin frais()
+        - [x] prendre la fonctoin frais()
       - si non (rien)
 - [ ] Envoye multiple (Transfert)
     - [ ] Affichage  
