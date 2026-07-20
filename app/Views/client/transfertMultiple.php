@@ -2,8 +2,8 @@
 <?= $this->section('content') ?>
 
     <style>
-        .ligneDestinataire { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-end; }
-        .ligneDestinataire .form-group { flex: 1; margin-bottom: 0; }
+        .ligneNumero { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-end; }
+        .ligneNumero .form-group { flex: 1; margin-bottom: 0; }
         .numeroLigne { color: #6b7280; font-size: 13px; width: 24px; padding-bottom: 8px; }
         .btnSupprimer { padding: 6px 12px; }
         #messageOperateur { display: none; color: #991b1b; background: #fee2e2; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; font-size: 14px; }
@@ -13,8 +13,8 @@
 
     <p>Solde actuel : <strong><?= number_format((float) $solde, 0, ',', ' ') ?> Ar</strong></p>
     <p class="text-muted" style="font-size: 14px;">
-        Ajoutez autant de destinataires que nécessaire. Tous les numéros doivent
-        appartenir au même opérateur.
+        Le montant total saisi ci-dessous sera divisé équitablement entre tous les
+        numéros renseignés. Tous les numéros doivent appartenir au même opérateur.
     </p>
 
     <div id="messageOperateur">
@@ -24,25 +24,23 @@
     <form id="formTransfertMultiple" method="post" action="/client/transfert/multiple">
         <?= csrf_field() ?>
 
-        <div id="lignesDestinataires">
+        <div class="form-group mb-4">
+            <label for="montant">Montant total à transférer (Ar)</label>
+            <input type="number" name="montant" id="montant" min="1" step="1"
+                value="<?= esc(old('montant')) ?>" required>
+        </div>
+
+        <div id="lignesNumeros">
             <?php
-            // Au rechargement (erreur backend), on réaffiche les lignes saisies ;
-            // sinon on part avec une seule ligne vide.
-            $numerosSaisis  = old('numero') ?? [''];
-            $montantsSaisis = old('montant') ?? [''];
+            $numerosSaisis = old('numero') ?? [''];
             foreach ($numerosSaisis as $i => $numeroSaisi):
             ?>
-                <div class="ligneDestinataire">
+                <div class="ligneNumero">
                     <span class="numeroLigne">#<?= $i + 1 ?></span>
                     <div class="form-group">
                         <label>Numéro du destinataire</label>
                         <input type="text" name="numero[]" class="champNumero" placeholder="0331234567"
-                               value="<?= esc($numeroSaisi) ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Montant (Ar)</label>
-                        <input type="number" name="montant[]" min="1" step="1"
-                               value="<?= esc($montantsSaisis[$i] ?? '') ?>">
+                            value="<?= esc($numeroSaisi) ?>">
                     </div>
                     <?php if ($i > 0): ?>
                         <button type="button" class="btn btn-secondary btnSupprimer">X</button>
@@ -80,11 +78,10 @@
         'modalId' => 'modalTransfertMultiple',
         'formId'  => 'formTransfertMultiple',
         'titre'   => 'Confirmer les transferts',
-        'message' => 'Voulez-vous confirmer l\'envoi vers tous les destinataires renseignés ?',
+        'message' => 'Voulez-vous confirmer l\'envoi ? Le montant total sera divisé entre tous les destinataires.',
     ]) ?>
 
     <script>
-        // Table des préfixes -> opérateur, pour la vérification côté client.
         window.prefixesOperateurs = <?= json_encode($prefixesOperateurs ?? []) ?>;
     </script>
     <script src="/js/transfertMultiple.js"></script>
