@@ -23,6 +23,12 @@ class CreateConfigTable extends Migration
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
             ],
+            'frais' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '10,2',
+                'null'       => false,
+                'default'    => 0.00,
+            ],
             'gain' => [
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
@@ -31,7 +37,7 @@ class CreateConfigTable extends Migration
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
 
-        $this->forge->addKey('id', true); // clé primaire
+        $this->forge->addKey('id', true);
         $this->forge->createTable('config');
     }
 

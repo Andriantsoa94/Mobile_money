@@ -75,16 +75,16 @@
 
 ### Cote Client (Andriantsoa)
 
-- [ ] Inclure un frais de retrait
-  - [ ] dans view
+- [x] Inclure un frais de retrait
+  - [x] dans view
     - [x] ajout d'une input radio si ajoute frais
       - si oui
         - [x] prendre la fonctoin frais()
       - si non (rien)
-- [ ] Envoye multiple (Transfert)
-    - [ ] Affichage  
-        - [ ] Boutton pour ajouter un autre numero
-        - [ ] Fonction js qui va inserer une autre formulaire de numero et de montant
-        - [ ] Verification via js que les numeros sont le meme operateur 
-    - [ ] Backend : 
-        - [ ] Validation multiple
+- [x] Envoye multiple (Transfert)
+    - [x] Affichage  
+        - [x] Boutton pour ajouter un autre numero
+        - [x] Fonction js qui va inserer une autre formulaire de numero et de montant
+        - [x] Verification via js que les numeros sont le meme operateur 
+    - [x] Backend : 
+        - [x] Validation multiple
