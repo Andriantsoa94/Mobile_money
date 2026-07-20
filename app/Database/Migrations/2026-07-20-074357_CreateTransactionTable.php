@@ -21,6 +21,11 @@ class CreateTransactionTable extends Migration
                 'unsigned'   => true,
                 'null'       => true,
             ],
+            'valeur' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '10,2',
+                'null'       => false,
+            ],
             'gain' => [
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',

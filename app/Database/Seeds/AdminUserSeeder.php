@@ -18,7 +18,6 @@ class AdminUserSeeder extends Seeder
         $idRoleAdmin  = $this->db->table('role')->where('type', 'admin')->get()->getRowArray()['id'];
         $idRoleClient = $this->db->table('role')->where('type', 'client')->get()->getRowArray()['id'];
 
-        // Opérateur + préfixes autorisés (033, 037)
         $this->db->table('operateur')->insertBatch([
             ['nom' => 'Telma', 'created_at' => $now, 'updated_at' => $now],
         ]);
@@ -30,9 +29,9 @@ class AdminUserSeeder extends Seeder
         ]);
 
         $this->db->table('user')->insertBatch([
-            ['nom' => 'Jean',   'CIN' => '1234567890', 'idrole' => $idRoleAdmin,  'created_at' => $now, 'updated_at' => $now], // admin
-            ['nom' => 'Marie',  'CIN' => '1111111111', 'idrole' => $idRoleClient, 'created_at' => $now, 'updated_at' => $now], // client 1
-            ['nom' => 'Paul',   'CIN' => '2222222222', 'idrole' => $idRoleClient, 'created_at' => $now, 'updated_at' => $now], // client 2
+            ['nom' => 'Jean',   'CIN' => '1234567890', 'idrole' => $idRoleAdmin,  'created_at' => $now, 'updated_at' => $now],
+            ['nom' => 'Marie',  'CIN' => '1111111111', 'idrole' => $idRoleClient, 'created_at' => $now, 'updated_at' => $now],
+            ['nom' => 'Paul',   'CIN' => '2222222222', 'idrole' => $idRoleClient, 'created_at' => $now, 'updated_at' => $now],
         ]);
 
         $idAdmin   = $this->db->table('user')->where('nom', 'Jean')->get()->getRowArray()['id'];
