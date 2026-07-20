@@ -16,7 +16,6 @@ use CodeIgniter\Filters\SecureHeaders;
 class Filters extends BaseFilters
 {
     public array $aliases = [
-        'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
@@ -25,6 +24,9 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'csrf'  => \CodeIgniter\Filters\CSRF::class,
+        'auth'  => \App\Filters\AuthFilter::class,
+        'role'  => \App\Filters\RoleFilter::class,
     ];
 
     public array $required = [

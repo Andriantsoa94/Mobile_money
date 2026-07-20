@@ -8,7 +8,7 @@
 - [ ] Création du schéma de base (`user`, `prefixe`, `typeOperation`, `config`, `transaction`, `solde`) (Jean Pierre)
 - [ ] Seed du user admin (numéro + role `operateur` + password) (Jean Pierre)
 - [ ] Page Login unique (numéro de téléphone + branchement client/operateur) (Andriantsoa)
-- [ ] Middleware/guard de routing par `role` (Andriantsoa)
+- [x] Middleware/guard de routing par `role` (Andriantsoa)
 
 > Ces 5 points sont des fondations partagées. Une fois faits, les deux blocs ci-dessous sont indépendants l'un de l'autre et peuvent avancer en parallèle.
 
