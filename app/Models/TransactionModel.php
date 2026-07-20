@@ -19,6 +19,26 @@ class TransactionModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
+    public function frais(float $valeur, int $idOperateur): float
+    {
+        $bareme = $this->db->table('config_bareme')
+            ->where('idOperateur', $idOperateur)
+            ->where('montant_min <=', $valeur)
+            ->where('montant_max >=', $valeur)
+            ->get()
+            ->getRowArray();
+
+        if (!$bareme) {
+            return 0.0;
+        }
+
+        $fraisFixe = (float) ($bareme['valeur_frais'] ?? 0);
+        $pourcentage = (float) ($bareme['pourcentage'] ?? 0);
+        $fraisPourcentage = ($valeur * $pourcentage) / 100;
+
+        return $fraisFixe + $fraisPourcentage;
+    }
+
     private function builderAvecAlias()
     {
         return $this->db->table('transaction tr');
