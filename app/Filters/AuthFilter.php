@@ -1,19 +1,17 @@
 <?php
+
 namespace App\Filters;
 
-use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class AuthFilter implements FilterInterface
 {
-
     public function before(RequestInterface $request, $arguments = null)
     {
-        $session = session();
-
-        if (!$session->get('user')) {
-            return redirect()->to('/login')->with('error', 'Connectez-vous pour acceder a cette page');
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Veuillez vous connecter.');
         }
     }
 
@@ -22,4 +20,3 @@ class AuthFilter implements FilterInterface
 
     }
 }
-?>
