@@ -5,8 +5,8 @@
 ### Base commune (à faire en tout premier, avant la répartition)
 
 - [ ] Setup projet (repo, structure app unique, connexion DB) (Andriantsoa)
-- [ ] Création du schéma de base (`user`, `prefixe`, `typeOperation`, `config`, `transaction`, `solde`) (Jean Pierre)
-- [ ] Seed du user admin (numéro + role `operateur` + password) (Jean Pierre)
+- [x] Création du schéma de base (`user`, `prefixe`, `typeOperation`, `config`, `transaction`, `solde`) (Jean Pierre)
+- [x] Seed du user admin (numéro + role `operateur` + password) (Jean Pierre)
 - [ ] Page Login unique (numéro de téléphone + branchement client/operateur) (Andriantsoa)
 - [x] Middleware/guard de routing par `role` (Andriantsoa)
 
