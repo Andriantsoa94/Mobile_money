@@ -1,0 +1,20 @@
+ERROR - 2026-04-16 14:30:45 --> Database connection failed: Unable to connect to MySQL server
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 1234.
+ 1 [internal function]: CodeIgniter\Database\BaseConnection->connect()
+ERROR - 2026-04-16 14:31:12 --> Query error: Table 'gestion_biblio.livres' doesn't exist
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseBuilder.php on line 567.
+ 1 [internal function]: CodeIgniter\Database\BaseBuilder->get()
+ERROR - 2026-04-16 14:32:05 --> Undefined index: titre in APPPATH/Controllers/Livres.php on line 45
+[Method: POST, Route: /livres/add]
+in APPPATH/Controllers/Livres.php on line 45.
+ 1 [internal function]: Livres->add()
+ERROR - 2026-04-16 14:33:18 --> File upload error: The uploaded file exceeds the maximum allowed size
+[Method: POST, Route: /livres/upload]
+in APPPATH/Controllers/Livres.php on line 78.
+ 1 [internal function]: Livres->upload()
+ERROR - 2026-04-16 14:34:22 --> Authentication failed: Invalid credentials
+[Method: POST, Route: /login]
+in APPPATH/Controllers/Auth.php on line 22.
+ 1 [internal function]: Auth->login()

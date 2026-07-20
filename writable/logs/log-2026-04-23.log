@@ -1,0 +1,354 @@
+CRITICAL - 2026-04-23 17:44:55 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: /]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:44:59 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:46:51 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:46:51 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:46:51 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:48:34 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:49:18 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:49:19 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:08 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:09 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:09 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:09 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:10 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:10 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:11 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:11 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:11 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:12 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:12 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:58:13 --> CodeIgniter\Filters\Exceptions\FilterException: "forcehttps" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:59:45 --> CodeIgniter\Filters\Exceptions\FilterException: "pagecache" filter must have a matching alias defined.
+[Method: GET, Route: /]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:59:46 --> CodeIgniter\Filters\Exceptions\FilterException: "pagecache" filter must have a matching alias defined.
+[Method: GET, Route: /]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 17:59:46 --> CodeIgniter\Filters\Exceptions\FilterException: "pagecache" filter must have a matching alias defined.
+[Method: GET, Route: /]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/Filters/Filters.php(319): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Filters/Filters.php(353): CodeIgniter\Filters\Filters->getRequiredClasses()
+ 4 SYSTEMPATH/CodeIgniter.php(373): CodeIgniter\Filters\Filters->runRequired()
+ 5 SYSTEMPATH/CodeIgniter.php(333): CodeIgniter\CodeIgniter->runRequiredBeforeFilters()
+ 6 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:00:37 --> CodeIgniter\Filters\Exceptions\FilterException: "performance" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:09 --> CodeIgniter\Filters\Exceptions\FilterException: "toolbar" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:09 --> CodeIgniter\Filters\Exceptions\FilterException: "toolbar" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:10 --> CodeIgniter\Filters\Exceptions\FilterException: "toolbar" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:10 --> CodeIgniter\Filters\Exceptions\FilterException: "toolbar" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:10 --> CodeIgniter\Filters\Exceptions\FilterException: "toolbar" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:10 --> CodeIgniter\Filters\Exceptions\FilterException: "toolbar" filter must have a matching alias defined.
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 402.
+ 1 SYSTEMPATH/Filters/Filters.php(402): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias()
+ 2 SYSTEMPATH/View/View.php(271): CodeIgniter\Filters\Filters->getRequiredFilters()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/AuthController.php(8): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->form()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-23 18:02:47 --> Error: Class "App\Filters\PerformanceFilter" not found
+[Method: GET, Route: login]
+in SYSTEMPATH/Filters/Filters.php on line 299.
+ 1 SYSTEMPATH/Filters/Filters.php(276): CodeIgniter\Filters\Filters->createFilter()
+ 2 SYSTEMPATH/Filters/Filters.php(364): CodeIgniter\Filters\Filters->runAfter()
+ 3 SYSTEMPATH/CodeIgniter.php(393): CodeIgniter\Filters\Filters->runRequired()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->runRequiredAfterFilters()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

@@ -1,0 +1,352 @@
+CRITICAL - 2026-04-20 12:43:46 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:48 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:48 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:49 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:50 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:52 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:55 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:56 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:57 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:58 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:43:59 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:00 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:01 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:02 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:03 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:04 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:05 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:06 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:07 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:08 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:09 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:10 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:11 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:12 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:13 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:14 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:15 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:16 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:17 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:18 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:19 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:20 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:21 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:22 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:23 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:24 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:25 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:26 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:27 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:28 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:29 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:30 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:31 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:32 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:33 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:34 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:35 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:36 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:37 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:38 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:39 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:40 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:41 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:42 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:43 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:44 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:45 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:46 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:47 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:48 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:49 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:50 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:51 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:52 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:53 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:54 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:55 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:56 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:57 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:58 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:44:59 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:00 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:01 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:02 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:03 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:04 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:05 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:06 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:07 --> ErrorException: Type of App\Models\EmpruntModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:08 --> ErrorException: Undefined property: App\Models\LivreModel::$table
+[Method: GET, Route: /livres]
+in APPPATH/Models/LivreModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:09 --> ErrorException: Undefined property: App\Models\EmpruntModel::$table
+[Method: POST, Route: /emprunts]
+in APPPATH/Models/EmpruntModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:10 --> ErrorException: Call to undefined method App\Models\LivreModel::findAll()
+[Method: GET, Route: /livres]
+in APPPATH/Controllers/Livres.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:11 --> ErrorException: Call to undefined method App\Models\EmpruntModel::findAll()
+[Method: POST, Route: /emprunts]
+in APPPATH/Controllers/Emprunts.php on line 15.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:12 --> ErrorException: Unable to connect to the database.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Database/BaseConnection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:13 --> ErrorException: View 'welcome_message' not found.
+[Method: GET, Route: /]
+in SYSTEMPATH/View/View.php on line 150.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:14 --> ErrorException: Controller 'Livres' not found.
+[Method: GET, Route: /livres]
+in SYSTEMPATH/Router/Router.php on line 100.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:15 --> ErrorException: No route found for 'GET /unknown'
+[Method: GET, Route: /unknown]
+in SYSTEMPATH/Router/Router.php on line 50.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-20 12:45:16 --> ErrorException: Type of App\Models\LivreModel::$useTimestamps must not be defined (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH/Models/LivreModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
