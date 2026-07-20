@@ -18,10 +18,12 @@ class CreateUserTable extends Migration
             'nom' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
+                'null'       => true,
             ],
             'CIN' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2',
+                'type'       => 'VARCHAR',
+                'constraint' => 20,
+                'null'       => true,
             ],
             'idrole' => [
                 'type'       => 'INT',

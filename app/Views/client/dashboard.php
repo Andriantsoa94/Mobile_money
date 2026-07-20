@@ -19,9 +19,9 @@
         <h3>Dernières transactions</h3>
         <ul>
             <?php foreach ($dernieresTransactions as $t): ?>
-                <li><?= esc($t['operation']) ?> — <?= esc($t['datetime']) ?></li>
+                <li><?= esc($t['gain']) ?> Ar — <?= esc($t['created_at']) ?></li>
             <?php endforeach; ?>
         </ul>
     </div>
 
-<?= $this->section('content') ?>
+<?= $this->endSection() ?>

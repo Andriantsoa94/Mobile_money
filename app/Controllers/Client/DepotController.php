@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Controllers\Client;
 
 use App\Controllers\BaseController;
 

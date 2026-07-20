@@ -16,8 +16,8 @@ class CreateNumeroTable extends Migration
                 'auto_increment' => true,
             ],
             'numero' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2',
+                'type'       => 'VARCHAR',
+                'constraint' => 15,
             ],
             'iduser' => [
                 'type'       => 'INT',
