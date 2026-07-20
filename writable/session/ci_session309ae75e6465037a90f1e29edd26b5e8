@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1784535629;_ci_previous_url|s:27:"http://localhost:8080/login";_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:6:"numero";s:10:"0341112233";s:14:"csrf_test_name";s:32:"32653792fd3a568fca217c5704ad34de";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"new";s:5:"error";s:3:"new";}error|s:23:"Préfixe non autorisé.";
