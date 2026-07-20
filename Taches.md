@@ -65,11 +65,11 @@
 
 ### Cote Operateur
 
-- [ ] Modification au niveau table prefixe : ajout d'un colonne appartenance (1 si moi sinon 0)
-- [ ] Creation de table : commission (idOperateur , pourcentage)
+- [x] Modification au niveau table prefixe : ajout d'un colonne appartenance (1 si moi sinon 0)
+- [x] Creation de table : commission (idOperateur , pourcentage)
 - [ ] Dans la page Situation gain : Ajout d'autre Contenu : 
     - [ ] affichage (Total des commissions)
-    - [ ] table (transaction (commission))
+    - [x] table (transaction (commission et idAutreOperateur))
 - [ ] Page pour afficher les listes de montant a envoyer pour chaque client
     - [ ] Affichage : Operateur , Montant
     - [ ] Fonction : sommeMontant(idOperateur) 

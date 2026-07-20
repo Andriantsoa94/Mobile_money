@@ -44,7 +44,8 @@
 
 <div class="card border-0 shadow-sm">
     <div class="card-body">
-        <h5 class="card-title mb-3">Détail par type d'opération</h5>
+        
+        <h5 class="card-title mb-3">Mes gains</h5>
         <?php if (empty($gainsParType)): ?>
             <p class="text-muted mb-0">Aucune donnée pour la période.</p>
         <?php else: ?>
@@ -61,6 +62,37 @@
                         <?php foreach ($gainsParType as $g): ?>
                             <tr>
                                 <td><?= esc($g['typeNom'] ?? 'Non classé') ?></td>
+                                <td class="text-end"><?= (int) $g['nombre'] ?></td>
+                                <td class="text-end"><?= number_format((float) $g['total'], 0, ',', ' ') ?> Ar</td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm mt-4">
+    <div class="card-body">
+        
+        <h5 class="card-title mb-3">Les gains des autres operateurs</h5>
+        <?php if (empty($autreOperateur)): ?>
+            <p class="text-muted mb-0">Aucune donnée pour la période.</p>
+        <?php else: ?>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Opérateur</th>
+                            <th class="text-end">Nombre de transactions</th>
+                            <th class="text-end">Total des gains</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($autreOperateur as $g): ?>
+                            <tr>
+                                <td><?= esc($g['autreOperateurNom'] ?? 'Non classé') ?></td>
                                 <td class="text-end"><?= (int) $g['nombre'] ?></td>
                                 <td class="text-end"><?= number_format((float) $g['total'], 0, ',', ' ') ?> Ar</td>
                             </tr>
