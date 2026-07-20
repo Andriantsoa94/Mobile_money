@@ -5,8 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('/', 'LoginController::index');
+
 $routes->group('client', ['filter' => 'role:client'], function ($routes) {
-    $routes->get('/', 'LoginController::index');
     $routes->get('/', 'Client\DashboardController::index');
     $routes->get('depot', 'Client\DepotController::index');
     $routes->get('retrait', 'Client\RetraitController::index');
