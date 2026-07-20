@@ -22,15 +22,15 @@
 
 **Base**
 
-- user (nom, CIN, role, idNumero)
+- user (nom, CIN, idrole)
 - role (type) => client , admin
-- numero (numero ,idClient)
+- numero (numero ,iduser)
 
-- prefixe (num ,idOperateur) => valide sa tsia
 - operateur (nom)
-- typeOperation (libelle ,boolean)
+- prefixe (num ,idOperateur) => valide sa tsia
+- typeOperation (libelle ,isGain)
 - config (min ,max ,gain)
-- transaction (operation ,gain ,user ,datetime)
+- transaction (idOperateur ,gain ,idUser ,datetime)
 - solde (idUser ,value)
 
 **À faire**
@@ -115,12 +115,12 @@ mvola-app/
 │   │
 │   └── Database/
 │       ├── Migrations/
-│       │   ├── 001_CreateUserTable.php        # (base commune)
+│       │   ├── 001_CreateUserTable.php        # (Jean Pierre)
 │       │   ├── 002_CreatePrefixeTable.php     # (Jean Pierre)
 │       │   ├── 003_CreateTypeOperationTable.php # (Jean Pierre)
 │       │   ├── 004_CreateConfigTable.php      # (Jean Pierre)
-│       │   ├── 005_CreateTransactionTable.php # (Anriantsoa)
-│       │   └── 006_CreateSoldeTable.php       # (Anriantsoa)
+│       │   ├── 005_CreateTransactionTable.php # (Jean Pierre)
+│       │   └── 006_CreateSoldeTable.php       # (Jean Pierre)
 │       └── Seeds/
 │           └── AdminUserSeeder.php    # (Jean Pierre) crée le user admin whitelisté
 │
