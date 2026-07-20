@@ -95,4 +95,19 @@ class TransactionModel extends Model
 
         return $builder->get()->getResultArray();
     }
+
+    public function commissionAutreOperateur(){
+        
+        $builder = $this->builderAvecAlias()
+                ->select('autreOperateur.nom AS autreOperateurNom, SUM(tr.commission) AS total, COUNT(tr.id) AS nombre')
+                ->join('operateur AS autreOperateur', 'autreOperateur.id = tr.idAutreOperateur', 'left')
+                ->whereIn('autreOperateur.id', function($subQuery) {
+                    $subQuery->select('idoperateur')
+                            ->from('prefixe')
+                            ->where('appartenance', 0);
+                })
+                ->groupBy('tr.idAutreOperateur');
+
+        return $builder->get()->getResultArray();
+    }
 }

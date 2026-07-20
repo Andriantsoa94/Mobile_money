@@ -8,7 +8,8 @@ class AddIdTypeOperationToTransaction extends Migration
 {
     public function up()
     {
-        $this->forge->addColumn('transaction', [
+        // Ajout des backticks pour éviter le bug de mot réservé sous SQLite
+        $this->forge->addColumn('`transaction`', [
             'idTypeOperation' => [
                 'type'       => 'INT',
                 'constraint' => 11,
@@ -21,6 +22,7 @@ class AddIdTypeOperationToTransaction extends Migration
 
     public function down()
     {
-        $this->forge->dropColumn('transaction', 'idTypeOperation');
+        // C'est ici que SQLite plantait : les backticks corrigent le "near transaction: syntax error"
+        $this->forge->dropColumn('`transaction`', 'idTypeOperation');
     }
 }

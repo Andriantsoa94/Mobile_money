@@ -24,8 +24,8 @@ class AdminUserSeeder extends Seeder
         $idOperateur = $this->db->table('operateur')->where('nom', 'Telma')->get()->getRowArray()['id'];
 
         $this->db->table('prefixe')->insertBatch([
-            ['numero' => '033', 'idoperateur' => $idOperateur, 'created_at' => $now, 'updated_at' => $now],
-            ['numero' => '037', 'idoperateur' => $idOperateur, 'created_at' => $now, 'updated_at' => $now],
+            ['numero' => '033', 'idoperateur' => $idOperateur, 'created_at' => $now, 'updated_at' => $now , 'appartenance' => 1],
+            ['numero' => '037', 'idoperateur' => $idOperateur, 'created_at' => $now, 'updated_at' => $now , 'appartenance' => 1],
         ]);
 
         $this->db->table('user')->insertBatch([

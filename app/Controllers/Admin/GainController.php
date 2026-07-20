@@ -21,12 +21,14 @@ class GainController extends BaseController
         $totalGains   = $transactionModel->totalGains($filtres);
         $gainsParType = $transactionModel->gainsParType($filtres);
         $typeOperationModel = new TypeOperationModel();
+        $autreOperateur = $transactionModel->commissionAutreOperateur();
 
         return view('admin/gains', [
             'filtres'      => $filtres,
             'totalGains'   => $totalGains,
             'gainsParType' => $gainsParType,
             'types'        => $typeOperationModel->filtreByNom(),
+            'autreOperateur' => $autreOperateur,
         ]);
     }
 }
