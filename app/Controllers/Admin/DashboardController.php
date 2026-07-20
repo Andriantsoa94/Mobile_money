@@ -12,18 +12,12 @@ class DashboardController extends BaseController
     public function index()
     {
         $transactionModel = new TransactionModel();
-        $userModel        = new UserModel();
         $roleModel        = new RoleModel();
 
         $totalGains             = $transactionModel->totalGains();
         $totalTransactions      = $transactionModel->countAllResults();
         $transactionsAujourdhui = $transactionModel->nombreAujourdhui();
-
-        $roleClient   = $roleModel->findByType('client');
-        $totalClients = $roleClient
-            ? $userModel->where('idrole', $roleClient['id'])->countAllResults()
-            : 0;
-
+        $totalClients = $roleModel->totalClients();
         $dernieresTransactions = $transactionModel->dernieresAvecClient(8);
 
         return view('admin/dashboard', [

@@ -17,20 +17,12 @@ class ClientController extends BaseController
 
         $roleClient = (new RoleModel())->findByType('client');
         $idRole     = $roleClient['id'] ?? 0;
+        $userModel = new UserModel();
 
-        $builder = (new UserModel())
-            ->select('user.*, solde.value AS soldeValue, GROUP_CONCAT(numero.numero) AS numeros')
-            ->join('solde', 'solde.idUser = user.id', 'left')
-            ->join('numero', 'numero.iduser = user.id', 'left')
-            ->where('user.idrole', $idRole)
-            ->groupBy('user.id');
+        $builder = $userModel->findByRole($idRole);
 
         if ($recherche !== '') {
-            $builder = $builder->groupStart()
-                ->like('user.nom', $recherche)
-                ->orLike('user.CIN', $recherche)
-                ->orLike('numero.numero', $recherche)
-                ->groupEnd();
+            $builder = $userModel->filtrer($builder, $recherche);
         }
 
         $clients = $builder->orderBy('user.nom', 'ASC')->find();
@@ -48,9 +40,13 @@ class ClientController extends BaseController
             return redirect()->to('/admin/clients')->with('error', 'Client introuvable.');
         }
 
-        $solde        = (new SoldeModel())->getValeur($id);
-        $numeros      = (new NumeroModel())->where('iduser', $id)->findAll();
-        $transactions = (new TransactionModel())->pourUtilisateur($id);
+        $numeroModel = new NumeroModel();
+        $soldeModel = new SoldeModel();
+        $transactionModel = new TransactionModel();
+
+        $solde        = $soldeModel->getValeur($id);
+        $numeros      = $numeroModel->findByUserId($id);
+        $transactions = $transactionModel->pourUtilisateur($id);
 
         return view('admin/clientDetail', [
             'client'       => $client,

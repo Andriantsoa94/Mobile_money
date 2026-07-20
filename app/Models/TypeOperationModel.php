@@ -40,4 +40,8 @@ class TypeOperationModel extends Model
     {
         return $this->where('isActif', 1)->orderBy('nom', 'ASC')->findAll();
     }
+
+    public function filtreByNom(){
+        return $this->orderBy('nom', 'ASC')->findAll();
+    }
 }

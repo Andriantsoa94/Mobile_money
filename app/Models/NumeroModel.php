@@ -17,4 +17,9 @@ class NumeroModel extends Model
     {
         return $this->where('numero', $numero)->first();
     }
+
+    public function findByUserId(int $idUser)
+    {
+        return $this->where('iduser', $idUser)->findAll();
+    }
 }

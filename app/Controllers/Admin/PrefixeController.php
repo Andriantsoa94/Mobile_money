@@ -12,11 +12,7 @@ class PrefixeController extends BaseController
     {
         $prefixeModel = new PrefixeModel();
 
-        $prefixes = $prefixeModel
-            ->select('prefixe.*, operateur.nom AS operateurNom')
-            ->join('operateur', 'operateur.id = prefixe.idoperateur', 'left')
-            ->orderBy('prefixe.numero', 'ASC')
-            ->find();
+        $prefixes = $prefixeModel->findAllMe();
 
         return view('admin/prefixes', [
             'prefixes' => $prefixes,
