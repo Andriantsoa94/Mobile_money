@@ -30,6 +30,7 @@
                         <thead class="table-light">
                         <tr>
                             <th scope="col" class="ps-4">Valeur</th>
+                            <th scope="col">Frais</th>
                             <th scope="col">Gain</th>
                             <th scope="col" class="pe-4 text-end">Date & Heure</th>
                         </tr>
@@ -43,9 +44,15 @@
                                     </td>
 
                                     <td>
-                                    <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
-                                        +<?= number_format((float)esc($t['gain']), 2, ',', ' ') ?> Ar
-                                    </span>
+                                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
+                                            <?= number_format((float)esc($t['frais'] ?? 0), 2, ',', ' ') ?> Ar
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
+                                            +<?= number_format((float)esc($t['gain']), 2, ',', ' ') ?> Ar
+                                        </span>
                                     </td>
 
                                     <td class="pe-4 text-end text-muted small">
@@ -56,7 +63,7 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="3" class="text-center text-muted py-4">
+                                <td colspan="4" class="text-center text-muted py-4">
                                     Aucune transaction récente trouvée.
                                 </td>
                             </tr>
