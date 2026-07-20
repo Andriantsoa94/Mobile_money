@@ -1,73 +1,60 @@
-# Todo — Mobile Money (état du projet + répartition)
+# Todo - Mobile Money (etat du projet)
 
-## Version 1
+## Version 1 - TERMINEE
 
 ---
 
-## ✅ Base commune — TERMINÉ
+## Base commune
 
 - [x] Setup projet CodeIgniter 4 (structure, config SQLite)
-- [x] Schéma de base : `role`, `user`, `operateur`, `prefixe`, `typeOperation`, `config`, `transaction`, `solde`, `numero`
-- [x] Migrations corrigées et dans le bon ordre (`role` → `user` → `operateur` → `prefixe` → `typeOperation` → `config` → `transaction` → `solde` → `numero`)
-- [x] Seeder `AdminUserSeeder` : rôle admin/client, user admin (`0330000000`), opérateur, préfixes `033`/`037`
-- [x] `RoleModel`, `UserModel`, `NumeroModel`, `PrefixeModel` fonctionnels (allowedFields corrects)
-- [x] `LoginController` complet : vérif préfixe, recherche/création auto client, login admin, gestion session
-- [x] Routes `/login` (GET+POST), `/logout`, groupes `client` (`role:client`) et `admin` (`role:admin`)
-- [x] `AuthFilter` / `RoleFilter` fonctionnels, guard par rôle
-- [x] Vue login + helper `form` chargé (csrf_field opérationnel)
-- [x] Dashboard client minimal fonctionnel (layout + affichage solde/historique)
-- [x] Dashboard admin — **stub minimal seulement**, à construire
-
-**Testé et validé** : login admin → `/admin`, login nouveau numéro (préfixe valide) → création auto + `/client`, préfixe invalide → refusé.
-
-> ⚠️ Base locale par personne (SQLite, fichier `writable/db/mobile.db` non versionné). Chacun fait `php spark migrate` + `php spark db:seed AdminUserSeeder` de son côté après un `git pull`.
+- [x] Schema de base : role, user, operateur, prefixe, typeOperation, config, transaction, solde, numero
+- [x] Migrations dans le bon ordre
+- [x] Seeder AdminUserSeeder : role admin/client, user admin (0330000000), operateur, prefixes 033/037
+- [x] RoleModel, UserModel, NumeroModel, PrefixeModel fonctionnels
+- [x] LoginController complet : verif prefixe, recherche/creation auto client, login admin, gestion session
+- [x] Routes /login (GET+POST), /logout, groupes client (role:client) et admin (role:admin)
+- [x] AuthFilter / RoleFilter fonctionnels, guard par role
+- [x] Vue login stylee (Bootstrap)
+- [x] Dashboard client fonctionnel (layout + affichage solde/historique)
+- [x] Dashboard admin reel (cartes gains/transactions/clients)
 
 ---
 
-## Bloc 1 — Espace Client (Jean Pierre)
+## Bloc 1 - Espace Client
 
-### Pages / logique restantes
-
-- [ ] `SoldeModel` : implémenter `depot()`, `retrait()`, création automatique d'une ligne `solde = 0` à la création d'un client (Jean Pierre)
-- [ ] `Client\DepotController` : logique complète (calcul frais via `ConfigModel`, mise à jour solde, insertion transaction) (Jean Pierre)
-- [ ] `Client\RetraitController` : idem + vérification solde suffisant (Jean Pierre)
-- [ ] `Client\TransfertController` : vérif numéro destinataire + préfixe valide, transfert entre 2 soldes (Jean Pierre)
-- [ ] `Client\HistoriqueController` : liste des transactions du user connecté + filtres (Jean Pierre)
-- [ ] Vues `depot.php`, `retrait.php`, `transfert.php`, `historique.php` (Jean Pierre)
-- [ ] Composant modal de confirmation réutilisable (Jean Pierre)
-- [ ] Adapter `TransactionModel` : ajouter `allowedFields`, clarifier les colonnes utilisées (`idOperateur`, `gain`, `idUser`, pas de colonne "type d'opération" actuellement → à voir avec Andriantsoa si besoin d'ajouter une colonne `idTypeOperation`) (Jean Pierre + Andriantsoa, à se coordonner sur ce point précis uniquement)
-
----
-
-## Bloc 2 — Espace Opérateur / Admin (Andriantsoa)
-
-### Pages / logique restantes
-
-- [ ] Vrai `Admin\DashboardController` (le stub actuel n'affiche rien de réel) — cartes résumé gains/transactions/clients (Andriantsoa)
-- [ ] `Admin\PrefixeController` : CRUD table `prefixe` (Andriantsoa)
-- [ ] `Admin\TypeOperationController` : CRUD `typeOperation` + toggle actif/inactif (Andriantsoa)
-- [ ] `Admin\ConfigController` : CRUD barèmes (`config`: min/max/gain) par type d'opération (Andriantsoa)
-- [ ] `Admin\GainController` : situation des gains, filtres période/type, agrégation (Andriantsoa)
-- [ ] `Admin\ClientController` : liste clients + recherche + détail client (solde, historique) (Andriantsoa)
-- [ ] Vues correspondantes : `admin/prefixes.php`, `admin/types_operation.php`, `admin/config_bareme.php`, `admin/gains.php`, `admin/clients_liste.php`, `admin/client_detail.php` (Andriantsoa)
-- [ ] Layout `layouts/layout_admin.php` (n'existe pas encore, comme pour le client) (Andriantsoa)
+- [x] SoldeModel : depot(), retrait(), transferer(), creation automatique d'une ligne solde = 0 a la creation d'un client
+- [x] Client\DepotController : calcul frais via ConfigModel, mise a jour solde, insertion transaction
+- [x] Client\RetraitController : idem + verification solde suffisant
+- [x] Client\TransfertController : verif numero destinataire + prefixe valide, transfert entre 2 soldes
+- [x] Client\HistoriqueController : liste des transactions du user connecte (sans filtres)
+- [x] Vues depot.php, retrait.php, transfert.php, historique.php
+- [x] Composant modal de confirmation reutilisable (components/modal_confirmation.php)
+- [x] TransactionModel adapte : allowedFields corrects, colonnes idOperateur / idTypeOperation / gain / idUser
+- [x] Seeder TypeOperationSeeder : Depot, Retrait, Transfert
+- [x] idTypeOperation renseigne a chaque insertion de transaction (depot/retrait/transfert)
 
 ---
 
-## Priorisation (délai 13h — Tag v1)
+## Bloc 2 - Espace Operateur / Admin
 
-1. ~~Base commune~~ ✅ fait
-2. En parallèle :
-   - **Jean Pierre** → Solde (dépôt/retrait/transfert fonctionnels) + Historique
-   - **Andriantsoa** → Dashboard admin réel + Préfixes + Types d'opération + Config barème
-3. Si temps restant :
-   - Jean Pierre → modal de confirmation, polish UI client
-   - Andriantsoa → Situation des gains + Situation comptes clients + Détail client
+- [x] Admin\DashboardController reel (cartes resume gains/transactions/clients + dernieres transactions avec type)
+- [x] Admin\PrefixeController : CRUD table prefixe
+- [x] Admin\TypeOperationController : CRUD typeOperation + toggle actif/inactif
+- [x] Admin\ConfigController : CRUD bareme (config: min/max/gain), sans lien a un type d'operation
+- [x] Admin\GainController : situation des gains, filtres periode/type, agregation
+- [x] Admin\ClientController : liste clients + recherche (nom, CIN, numero) + detail client (solde, numeros, historique)
+- [x] Vues correspondantes : prefixes.php, prefixeForm.php, typesOperation.php, typeOperationForm.php, configBareme.php, configForm.php, gains.php, clientsListe.php, clientDetail.php
+- [x] Layout layouts/layoutAdmin.php (Bootstrap, sans JS)
+- [x] Seeder ConfigBaremeSeeder : bareme de frais par tranche de montant fourni
 
 ---
 
-## Notes
+## Corrections apportees apres tests
 
-- Les deux blocs restent indépendants : aucun des deux n'attend l'autre pour avancer.
-- Seul point de coordination : la colonne manquante pour identifier le **type** de transaction (dépôt/retrait/transfert) dans la table `transaction` — actuellement rien ne stocke ça. À décider ensemble rapidement (ajout d'une colonne `idTypeOperation` recommandé) avant que les deux commencent à écrire dans cette table.
-- Ne jamais committer `writable/db/mobile.db` dans Git — seulement les migrations.
+- [x] Fix bug "Undefined variable $modalId" (remplacement de $this->include() par view())
+- [x] Fix erreur DatabaseException "near transaction: syntax error" (alias de table pour eviter le mot reserve SQLite "transaction")
+- [x] Ajout du numero client dans le tableau admin clients
+- [x] Simplification du bareme (retrait du champ type d'operation dans le formulaire)
+- [x] Fix affichage du type d'operation vide dans le tableau de bord (seed des types + idTypeOperation renseigne a l'insertion)
+- [x] Suppression des filtres dans l'historique client
+- [x] Style ajoute sur la page login
