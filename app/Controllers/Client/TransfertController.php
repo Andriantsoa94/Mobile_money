@@ -61,12 +61,10 @@ class TransfertController extends BaseController
             $frais      = (float) ($tranche['frais'] ?? 0);
             $gain       = (float) ($tranche['gain'] ?? 0);
             $commission = 0.0;
-            echo "num ici";
         } else {
             $frais      = 0.0;
             $gain       = 0.0;
-            $commission = $commissionModel->pourOperateur($idOperateurDest);
-            echo "num pas";
+            $commission = $commissionModel->pourOperateur($idOperateurDest, $montantSaisi);
         }
 
         if ($estChezNous) {
@@ -225,7 +223,7 @@ class TransfertController extends BaseController
             } else {
                 $frais      = 0.0;
                 $gain       = 0.0;
-                $commission = $commissionModel->pourOperateur($idOperateurDest);
+                $commission = $commissionModel->pourOperateur($idOperateurDest, $montantParNumero);
             }
 
             if ($inclureFrais === 1) {

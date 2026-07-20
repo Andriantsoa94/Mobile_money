@@ -29,10 +29,7 @@ class PrefixeController extends BaseController
 
     public function creer()
     {
-        $donnees = [
-            'numero'      => trim((string) $this->request->getPost('numero')),
-            'idoperateur' => (int) $this->request->getPost('idoperateur') ?: null,
-        ];
+        $donnees = $this->donneesFormulaire();
 
         if (! preg_match('/^[0-9]{3}$/', $donnees['numero'])) {
             return redirect()->back()->withInput()->with('error', 'Le préfixe doit contenir 3 chiffres.');
@@ -60,10 +57,7 @@ class PrefixeController extends BaseController
 
     public function mettreAJour(int $id)
     {
-        $donnees = [
-            'numero'      => trim((string) $this->request->getPost('numero')),
-            'idoperateur' => (int) $this->request->getPost('idoperateur') ?: null,
-        ];
+        $donnees = $this->donneesFormulaire();
 
         if (! preg_match('/^[0-9]{3}$/', $donnees['numero'])) {
             return redirect()->back()->withInput()->with('error', 'Le préfixe doit contenir 3 chiffres.');
@@ -78,5 +72,15 @@ class PrefixeController extends BaseController
     {
         (new PrefixeModel())->delete($id);
         return redirect()->to('/admin/prefixes')->with('success', 'Préfixe supprimé.');
+    }
+
+    private function donneesFormulaire(): array
+    {
+        return [
+            'numero'       => trim((string) $this->request->getPost('numero')),
+            'idoperateur'  => (int) $this->request->getPost('idoperateur') ?: null,
+            // 1 = nous appartient, 0 = autre opérateur
+            'appartenance' => (int) $this->request->getPost('appartenance'),
+        ];
     }
 }

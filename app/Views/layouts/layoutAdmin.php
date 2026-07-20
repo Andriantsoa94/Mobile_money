@@ -35,11 +35,13 @@
             <div class="titre">Général</div>
             <a href="/admin" class="<?= $uri === 'admin' ? 'actif' : '' ?>">Tableau de bord</a>
             <a href="/admin/gains" class="<?= str_starts_with($uri, 'admin/gains') ? 'actif' : '' ?>">Situation des gains</a>
+            <a href="/admin/situation-envoi" class="<?= str_starts_with($uri, 'admin/situation-envoi') ? 'actif' : '' ?>">Montants à envoyer</a>
             <a href="/admin/clients" class="<?= str_starts_with($uri, 'admin/clients') ? 'actif' : '' ?>">Clients</a>
 
             <div class="titre">Paramétrage</div>
             <a href="/admin/prefixes" class="<?= str_starts_with($uri, 'admin/prefixes') ? 'actif' : '' ?>">Préfixes</a>
             <a href="/admin/config" class="<?= str_starts_with($uri, 'admin/config') ? 'actif' : '' ?>">Barèmes</a>
+            <a href="/admin/commissions" class="<?= str_starts_with($uri, 'admin/commissions') ? 'actif' : '' ?>">Commissions</a>
 
             <div class="titre">Compte</div>
             <a href="/logout">Déconnexion</a>

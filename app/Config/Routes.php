@@ -33,6 +33,15 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('prefixes/(:num)/modifier',    'Admin\PrefixeController::mettreAJour/$1');
     $routes->post('prefixes/(:num)/supprimer',   'Admin\PrefixeController::supprimer/$1');
 
+    $routes->get('commissions',                     'Admin\CommissionController::index');
+    $routes->get('commissions/nouveau',              'Admin\CommissionController::nouveau');
+    $routes->post('commissions',                     'Admin\CommissionController::creer');
+    $routes->get('commissions/(:num)/modifier',      'Admin\CommissionController::modifier/$1');
+    $routes->post('commissions/(:num)/modifier',     'Admin\CommissionController::mettreAJour/$1');
+    $routes->post('commissions/(:num)/supprimer',    'Admin\CommissionController::supprimer/$1');
+
+    $routes->get('situation-envoi', 'Admin\SituationEnvoiController::index');
+
     $routes->get('config',                       'Admin\ConfigController::index');
     $routes->get('config/nouveau',               'Admin\ConfigController::nouveau');
     $routes->post('config',                      'Admin\ConfigController::creer');

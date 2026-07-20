@@ -114,4 +114,21 @@ class TransactionModel extends Model
             ->get()
             ->getResultArray();
     }
+
+    public function montantsAEnvoyerParOperateur(array $filtres = []): array
+    {
+        $builder = $this->builderAvecAlias()
+            ->select('autreOperateur.nom AS operateurNom, SUM(tr.valeur) AS totalMontant, SUM(tr.commission) AS totalCommission, COUNT(tr.id) AS nombre')
+            ->join('operateur AS autreOperateur', 'autreOperateur.id = tr.idAutreOperateur', 'inner')
+            ->groupBy('tr.idAutreOperateur');
+
+        if (! empty($filtres['dateDebut'])) {
+            $builder = $builder->where('tr.created_at >=', $filtres['dateDebut'] . ' 00:00:00');
+        }
+        if (! empty($filtres['dateFin'])) {
+            $builder = $builder->where('tr.created_at <=', $filtres['dateFin'] . ' 23:59:59');
+        }
+
+        return $builder->get()->getResultArray();
+    }
 }

@@ -5,6 +5,7 @@
 $estEdition = $prefixe !== null;
 $action     = $estEdition ? '/admin/prefixes/' . (int) $prefixe['id'] . '/modifier' : '/admin/prefixes';
 $titre      = $estEdition ? 'Modifier le préfixe' : 'Nouveau préfixe';
+$appartenanceActuelle = old('appartenance', (string) ($prefixe['appartenance'] ?? '1'));
 ?>
 
 <h2 class="mb-4"><?= esc($titre) ?></h2>
@@ -18,6 +19,7 @@ $titre      = $estEdition ? 'Modifier le préfixe' : 'Nouveau préfixe';
                 <label for="numero" class="form-label">Préfixe (3 chiffres)</label>
                 <input type="text" class="form-control" name="numero" id="numero" maxlength="3"
                        value="<?= esc(old('numero', $prefixe['numero'] ?? '')) ?>" required>
+                <div class="form-text">Ex : 032, 033, 034, 037...</div>
             </div>
 
             <div class="mb-3">
@@ -31,6 +33,24 @@ $titre      = $estEdition ? 'Modifier le préfixe' : 'Nouveau préfixe';
                         </option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label d-block">Appartenance</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="appartenance" id="appartenanceNous" value="1"
+                        <?= $appartenanceActuelle === '1' ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="appartenanceNous">Nous appartient</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="appartenance" id="appartenanceAutre" value="0"
+                        <?= $appartenanceActuelle === '0' ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="appartenanceAutre">Autre opérateur</label>
+                </div>
+                <div class="form-text">
+                    "Autre opérateur" : les frais ne s'appliquent pas, seule la commission
+                    configurée pour cet opérateur sera facturée.
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Enregistrer</button>

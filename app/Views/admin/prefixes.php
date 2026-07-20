@@ -17,6 +17,7 @@
                         <tr>
                             <th>Préfixe</th>
                             <th>Opérateur</th>
+                            <th>Appartenance</th>
                             <th class="text-end">Actions</th>
                         </tr>
                     </thead>
@@ -25,6 +26,13 @@
                             <tr>
                                 <td><code><?= esc($p['numero']) ?></code></td>
                                 <td><?= esc($p['operateurNom'] ?? '—') ?></td>
+                                <td>
+                                    <?php if ((int) ($p['appartenance'] ?? 0) === 1): ?>
+                                        <span class="badge bg-primary">Nous appartient</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary">Autre opérateur</span>
+                                    <?php endif; ?>
+                                </td>
                                 <td class="text-end">
                                     <a href="/admin/prefixes/<?= (int) $p['id'] ?>/modifier" class="btn btn-sm btn-outline-secondary">Modifier</a>
                                     <form action="/admin/prefixes/<?= (int) $p['id'] ?>/supprimer" method="post" class="d-inline">
