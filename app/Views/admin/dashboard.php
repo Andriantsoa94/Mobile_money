@@ -60,7 +60,7 @@
                             <tr>
                                 <td><?= esc($t['clientNom'] ?? '—') ?></td>
                                 <td><?= esc($t['typeNom'] ?? '—') ?></td>
-                                <td><?= esc($t['valeur']) ?></td>
+                                <td><?= esc($t['valeur']) ?> Ar</td>
                                 <td class="text-end"><?= number_format((float) $t['gain'], 0, ',', ' ') ?> Ar</td>
                                 <td><?= esc($t['created_at']) ?></td>
                             </tr>
