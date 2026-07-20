@@ -32,6 +32,7 @@
 - [ ] Fonction faire retrait (auto) (Andriantsoa)
 - [ ] Fonction faire transfert (Andriantsoa)
 - [ ] Fonction récupération historique par user (Andriantsoa)
+- [ ] fonction pour calculer le faire dans configModel->calculerFrais
 
 ---
 
