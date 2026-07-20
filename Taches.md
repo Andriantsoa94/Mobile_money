@@ -20,7 +20,7 @@
 
 ---
 
-## Bloc 1 - Espace Client
+## Bloc 1 - Espace Client (Jean Pierre)
 
 - [x] SoldeModel : depot(), retrait(), transferer(), creation automatique d'une ligne solde = 0 a la creation d'un client
 - [x] Client\DepotController : calcul frais via ConfigModel, mise a jour solde, insertion transaction
@@ -35,7 +35,7 @@
 
 ---
 
-## Bloc 2 - Espace Operateur / Admin
+## Bloc 2 - Espace Operateur / Admin (Andriantsoa)
 
 - [x] Admin\DashboardController reel (cartes resume gains/transactions/clients + dernieres transactions avec type)
 - [x] Admin\PrefixeController : CRUD table prefixe
@@ -49,7 +49,7 @@
 
 ---
 
-## Corrections apportees apres tests
+## Corrections apportees apres tests (Andiantsoa)
 
 - [x] Fix bug "Undefined variable $modalId" (remplacement de $this->include() par view())
 - [x] Fix erreur DatabaseException "near transaction: syntax error" (alias de table pour eviter le mot reserve SQLite "transaction")
