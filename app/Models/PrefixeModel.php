@@ -28,4 +28,17 @@ class PrefixeModel extends Model
     {
         return $this->select('numero')->findAll();
     }
+
+    /**
+     * Résout l'id de l'opérateur correspondant au préfixe (3 premiers
+     * chiffres) d'un numéro de téléphone complet. Retourne null si le
+     * préfixe n'est pas reconnu.
+     */
+    public function trouverOperateurParNumero(string $numero): ?int
+    {
+        $prefixe = substr($numero, 0, 3);
+        $ligne   = $this->where('numero', $prefixe)->first();
+
+        return isset($ligne['idoperateur']) ? (int) $ligne['idoperateur'] : null;
+    }
 }

@@ -12,35 +12,32 @@ class TypeOperationModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nom', 'isGain', 'isActif'];
 
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
-
-    protected array $casts = [];
-    protected array $castHandlers = [];
-
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
+    protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+    /**
+     * Inverse l'état actif/inactif d'un type d'opération.
+     */
+    public function basculerActif(int $id): bool
+    {
+        $ligne = $this->find($id);
+        if (! $ligne) {
+            return false;
+        }
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+        return (bool) $this->update($id, [
+            'isActif' => empty($ligne['isActif']) ? 1 : 0,
+        ]);
+    }
+
+    /**
+     * Uniquement les types d'opération actifs (pour formulaires côté client).
+     */
+    public function listeActifs(): array
+    {
+        return $this->where('isActif', 1)->orderBy('nom', 'ASC')->findAll();
+    }
 }
