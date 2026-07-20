@@ -13,31 +13,14 @@ class TransactionModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
 
-    protected $allowedFields = ['idOperateur', 'idTypeOperation', 'gain', 'idUser' ,'valeur'];
+    // "valeur" = montant de l'operation, "frais" = paye par le client,
+    // "gain" = conserve par la plateforme. frais et gain sont
+    // independants (voir ConfigModel).
+    protected $allowedFields = ['idOperateur', 'idTypeOperation', 'valeur', 'frais', 'gain', 'idUser'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-
-    public function frais(float $valeur, int $idOperateur): float
-    {
-        $bareme = $this->db->table('config_bareme')
-            ->where('idOperateur', $idOperateur)
-            ->where('montant_min <=', $valeur)
-            ->where('montant_max >=', $valeur)
-            ->get()
-            ->getRowArray();
-
-        if (!$bareme) {
-            return 0.0;
-        }
-
-        $fraisFixe = (float) ($bareme['valeur_frais'] ?? 0);
-        $pourcentage = (float) ($bareme['pourcentage'] ?? 0);
-        $fraisPourcentage = ($valeur * $pourcentage) / 100;
-
-        return $fraisFixe + $fraisPourcentage;
-    }
 
     private function builderAvecAlias()
     {
@@ -74,6 +57,9 @@ class TransactionModel extends Model
             ->countAllResults();
     }
 
+    /**
+     * Total des GAINS (profit plateforme, pas les frais clients) sur une periode.
+     */
     public function totalGains(array $filtres = []): float
     {
         $builder = $this->builderAvecAlias()->selectSum('tr.gain', 'total');

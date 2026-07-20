@@ -10,17 +10,20 @@ class ConfigBaremeSeeder extends Seeder
     {
         $maintenant = date('Y-m-d H:i:s');
 
+        // "gain" est laisse a 0 par defaut : aucune valeur de gain n'a ete
+        // fournie pour l'instant. A ajuster via l'interface admin
+        // (/admin/config) une fois les montants de gain decides.
         $tranches = [
-            ['min' => 100,      'max' => 1000,    'gain' => 50],
-            ['min' => 1001,     'max' => 5000,    'gain' => 50],
-            ['min' => 5001,     'max' => 10000,   'gain' => 100],
-            ['min' => 10001,    'max' => 25000,   'gain' => 200],
-            ['min' => 25001,    'max' => 50000,   'gain' => 400],
-            ['min' => 50001,    'max' => 100000,  'gain' => 800],
-            ['min' => 100001,   'max' => 250000,  'gain' => 1500],
-            ['min' => 250001,   'max' => 500000,  'gain' => 1500],
-            ['min' => 500001,   'max' => 1000000, 'gain' => 2500],
-            ['min' => 1000001,  'max' => 2000000, 'gain' => 3000],
+            ['min' => 100,      'max' => 1000,    'frais' => 50,   'gain' => 0],
+            ['min' => 1001,     'max' => 5000,    'frais' => 50,   'gain' => 0],
+            ['min' => 5001,     'max' => 10000,   'frais' => 100,  'gain' => 0],
+            ['min' => 10001,    'max' => 25000,   'frais' => 200,  'gain' => 0],
+            ['min' => 25001,    'max' => 50000,   'frais' => 400,  'gain' => 0],
+            ['min' => 50001,    'max' => 100000,  'frais' => 800,  'gain' => 0],
+            ['min' => 100001,   'max' => 250000,  'frais' => 1500, 'gain' => 0],
+            ['min' => 250001,   'max' => 500000,  'frais' => 1500, 'gain' => 0],
+            ['min' => 500001,   'max' => 1000000, 'frais' => 2500, 'gain' => 0],
+            ['min' => 1000001,  'max' => 2000000, 'frais' => 3000, 'gain' => 0],
         ];
 
         foreach ($tranches as &$tranche) {

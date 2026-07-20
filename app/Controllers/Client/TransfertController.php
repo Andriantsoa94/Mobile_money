@@ -3,10 +3,12 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\BaseController;
+use App\Models\ConfigModel;
 use App\Models\NumeroModel;
 use App\Models\PrefixeModel;
 use App\Models\SoldeModel;
 use App\Models\TransactionModel;
+use App\Models\TypeOperationModel;
 use RuntimeException;
 
 class TransfertController extends BaseController
@@ -23,10 +25,11 @@ class TransfertController extends BaseController
 
     public function store()
     {
-        $transactionModel = new TransactionModel();
+        $configModel      = new ConfigModel();
         $prefixeModel     = new PrefixeModel();
         $numeroModel      = new NumeroModel();
         $soldeModel       = new SoldeModel();
+        $transactionModel = new TransactionModel();
 
         $idUser       = session()->get('user_id');
         $numeroDest   = trim((string) $this->request->getPost('numero'));
@@ -57,27 +60,28 @@ class TransfertController extends BaseController
             return redirect()->to('/client/transfert')->withInput()->with('error', 'Impossible de vous transférer à vous-même.');
         }
 
-        $numeroSource       = $numeroModel->where('iduser', $idUser)->first();
+        $numeroSource      = $numeroModel->where('iduser', $idUser)->first();
         $idOperateurSource = $numeroSource ? $prefixeModel->trouverOperateurParNumero($numeroSource['numero']) : null;
-        $idOperateurDest   = $prefixeModel->trouverOperateurParNumero($numeroDest);
 
-        if ($idOperateurSource !== null && $idOperateurSource === $idOperateurDest) {
-            $fraisCalcules = $transactionModel->frais($montantSaisi, (int) $idOperateurSource);
-        } else {
-            $fraisCalcules = 0.0;
-        }
+        $tranche = $configModel->trancheDe($montantSaisi);
+        $frais   = (float) ($tranche['frais'] ?? 0);
+        $gain    = (float) ($tranche['gain'] ?? 0);
 
         if ($inclureFrais === 1) {
+            // Le destinataire reçoit le montant saisi, le frais s'ajoute au débit de l'expéditeur.
             $montantEnvoye = $montantSaisi;
-            $montantDebite = $montantSaisi + $fraisCalcules;
+            $montantDebite = $montantSaisi + $frais;
         } else {
-            $montantEnvoye = max(0, $montantSaisi - $fraisCalcules);
+            // Le frais est prélevé sur le montant saisi, le destinataire reçoit donc moins.
+            $montantEnvoye = max(0, $montantSaisi - $frais);
             $montantDebite = $montantSaisi;
         }
 
         if (! $soldeModel->soldeSuffisant($idUser, $montantDebite)) {
             return redirect()->to('/client/transfert')->withInput()->with('error', 'Solde insuffisant pour effectuer ce transfert.');
         }
+
+        $typeTransfert = (new TypeOperationModel())->where('nom', 'Transfert')->first();
 
         try {
             $soldeModel->transferer($idUser, $idUserDest, $montantDebite, $montantEnvoye);
@@ -86,11 +90,12 @@ class TransfertController extends BaseController
         }
 
         $transactionModel->insert([
-            'idUser'      => $idUser,
-            'idOperateur' => $idOperateurSource,
-            'gain'        => $fraisCalcules,
-            'valeur'      => $montantSaisi,
-            'frais'       => $fraisCalcules,
+            'idUser'          => $idUser,
+            'idOperateur'     => $idOperateurSource,
+            'idTypeOperation' => $typeTransfert['id'] ?? null,
+            'valeur'          => $montantSaisi,
+            'frais'           => $frais,
+            'gain'            => $gain,
         ]);
 
         return redirect()->to('/client')->with('success', 'Transfert effectué avec succès.');

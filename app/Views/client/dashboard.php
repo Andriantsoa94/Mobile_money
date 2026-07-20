@@ -40,18 +40,18 @@
                             <?php foreach ($dernieresTransactions as $t): ?>
                                 <tr>
                                     <td class="ps-4 fw-semibold text-dark">
-                                        <?= number_format((float)esc($t['valeur']), 2, ',', ' ') ?> Ar
+                                        <?= number_format((float) $t['valeur'], 2, ',', ' ') ?> Ar
                                     </td>
 
                                     <td>
                                         <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
-                                            <?= number_format((float)esc($t['frais'] ?? 0), 2, ',', ' ') ?> Ar
+                                            <?= number_format((float) $t['frais'], 2, ',', ' ') ?> Ar
                                         </span>
                                     </td>
 
                                     <td>
                                         <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
-                                            +<?= number_format((float)esc($t['gain']), 2, ',', ' ') ?> Ar
+                                            +<?= number_format((float) $t['gain'], 2, ',', ' ') ?> Ar
                                         </span>
                                     </td>
 

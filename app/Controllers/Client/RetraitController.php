@@ -35,7 +35,11 @@ class RetraitController extends BaseController
         $configModel = new ConfigModel();
         $soldeModel  = new SoldeModel();
 
-        $frais       = $configModel->calculerFrais($montant);
+        $tranche = $configModel->trancheDe($montant);
+        $frais   = (float) ($tranche['frais'] ?? 0);
+        $gain    = (float) ($tranche['gain'] ?? 0);
+
+        // Seul le "frais" est deduit du solde, jamais le "gain" (interne).
         $totalDebite = $montant + $frais;
 
         if (! $soldeModel->soldeSuffisant($idUser, $totalDebite)) {
@@ -56,7 +60,9 @@ class RetraitController extends BaseController
             'idUser'          => $idUser,
             'idOperateur'     => $idOperateur,
             'idTypeOperation' => $typeRetrait['id'] ?? null,
-            'gain'            => $frais,
+            'valeur'          => $montant,
+            'frais'           => $frais,
+            'gain'            => $gain,
         ]);
 
         return redirect()->to('/client')->with('success', 'Retrait effectué avec succès.');

@@ -9,8 +9,7 @@ class ConfigController extends BaseController
 {
     public function index()
     {
-        $configModel = new ConfigModel();
-        $baremes = $configModel->listeTriee();
+        $baremes = (new ConfigModel())->listeTriee();
 
         return view('admin/configBareme', [
             'baremes' => $baremes,
@@ -26,7 +25,6 @@ class ConfigController extends BaseController
 
     public function creer()
     {
-        $configModel = new ConfigModel();
         $donnees = $this->donneesFormulaire();
 
         $erreur = $this->valider($donnees);
@@ -34,15 +32,14 @@ class ConfigController extends BaseController
             return redirect()->back()->withInput()->with('error', $erreur);
         }
 
-        $configModel->insert($donnees);
+        (new ConfigModel())->insert($donnees);
 
         return redirect()->to('/admin/config')->with('success', 'Tranche créée.');
     }
 
     public function modifier(int $id)
     {
-        $configModel = new ConfigModel();
-        $bareme = $configModel->find($id);
+        $bareme = (new ConfigModel())->find($id);
         if (! $bareme) {
             return redirect()->to('/admin/config')->with('error', 'Tranche introuvable.');
         }
@@ -54,30 +51,31 @@ class ConfigController extends BaseController
 
     public function mettreAJour(int $id)
     {
-        $configModel = new ConfigModel();
         $donnees = $this->donneesFormulaire();
+
         $erreur = $this->valider($donnees);
         if ($erreur !== null) {
             return redirect()->back()->withInput()->with('error', $erreur);
         }
-        $configModel->update($id, $donnees);
+
+        (new ConfigModel())->update($id, $donnees);
 
         return redirect()->to('/admin/config')->with('success', 'Tranche mise à jour.');
     }
 
     public function supprimer(int $id)
     {
-        $configModel = new ConfigModel();
-        $configModel->delete($id);
+        (new ConfigModel())->delete($id);
         return redirect()->to('/admin/config')->with('success', 'Tranche supprimée.');
     }
 
     private function donneesFormulaire(): array
     {
         return [
-            'min'  => (float) $this->request->getPost('min'),
-            'max'  => (float) $this->request->getPost('max'),
-            'gain' => (float) $this->request->getPost('gain'),
+            'min'   => (float) $this->request->getPost('min'),
+            'max'   => (float) $this->request->getPost('max'),
+            'frais' => (float) $this->request->getPost('frais'),
+            'gain'  => (float) $this->request->getPost('gain'),
         ];
     }
 
@@ -89,8 +87,8 @@ class ConfigController extends BaseController
         if ($donnees['min'] >= $donnees['max']) {
             return 'Le min doit être inférieur au max.';
         }
-        if ($donnees['gain'] < 0) {
-            return 'Le gain ne peut pas être négatif.';
+        if ($donnees['frais'] < 0 || $donnees['gain'] < 0) {
+            return 'Le frais et le gain ne peuvent pas être négatifs.';
         }
         return null;
     }

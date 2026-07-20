@@ -14,25 +14,39 @@ class ConfigModel extends Model
     protected $protectFields    = true;
 
     // Barème global par tranche de montant : "min"/"max" délimitent la
-    // tranche, "gain" est le frais appliqué pour cette tranche.
-    protected $allowedFields = ['min', 'max', 'gain'];
+    // tranche. "frais" est ce que paie le client, "gain" est ce que
+    // garde la plateforme. Ce sont deux valeurs indépendantes, pas de
+    // calcul entre elles.
+    protected $allowedFields = ['min', 'max', 'frais', 'gain'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
     /**
-     * Calcule les frais applicables pour un montant donné, en fonction
-     * de la tranche [min, max] dans laquelle il tombe.
-     * Retourne 0 si aucune tranche ne correspond.
+     * Tranche correspondant à un montant donné (ou null si aucune ne matche).
+     */
+    public function trancheDe(float $montant): ?array
+    {
+        return $this->where('min <=', $montant)
+            ->where('max >=', $montant)
+            ->first();
+    }
+
+    /**
+     * Frais facturé au client pour ce montant (0 si aucune tranche ne correspond).
      */
     public function calculerFrais(float $montant): float
     {
-        $tranche = $this->where('min <=', $montant)
-            ->where('max >=', $montant)
-            ->first();
+        return (float) ($this->trancheDe($montant)['frais'] ?? 0);
+    }
 
-        return (float) ($tranche['gain'] ?? 0);
+    /**
+     * Gain conservé par la plateforme pour ce montant (0 si aucune tranche ne correspond).
+     */
+    public function calculerGain(float $montant): float
+    {
+        return (float) ($this->trancheDe($montant)['gain'] ?? 0);
     }
 
     /**

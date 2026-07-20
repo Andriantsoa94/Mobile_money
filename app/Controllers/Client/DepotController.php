@@ -32,12 +32,17 @@ class DepotController extends BaseController
             return redirect()->to('/client/depot')->with('error', 'Montant invalide.');
         }
 
+        $configModel = new ConfigModel();
+        $tranche     = $configModel->trancheDe($montant);
+        $frais       = (float) ($tranche['frais'] ?? 0);
+        $gain        = (float) ($tranche['gain'] ?? 0);
+
         $numero      = (new NumeroModel())->where('iduser', $idUser)->first();
         $idOperateur = $numero ? (new PrefixeModel())->trouverOperateurParNumero($numero['numero']) : null;
-        $frais       = (new ConfigModel())->calculerFrais($montant);
         $typeDepot   = (new TypeOperationModel())->where('nom', 'Dépôt')->first();
 
         try {
+            // Seul le "frais" impacte le solde du client, le "gain" est purement interne.
             (new SoldeModel())->depot($idUser, $montant);
         } catch (RuntimeException $e) {
             return redirect()->to('/client/depot')->with('error', $e->getMessage());
@@ -47,7 +52,9 @@ class DepotController extends BaseController
             'idUser'          => $idUser,
             'idOperateur'     => $idOperateur,
             'idTypeOperation' => $typeDepot['id'] ?? null,
-            'gain'            => $frais,
+            'valeur'          => $montant,
+            'frais'           => $frais,
+            'gain'            => $gain,
         ]);
 
         return redirect()->to('/client')->with('success', 'Dépôt effectué avec succès.');

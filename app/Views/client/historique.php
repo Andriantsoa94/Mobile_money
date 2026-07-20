@@ -18,7 +18,8 @@
                 <tr>
                     <th>Date</th>
                     <th>Type</th>
-                    <th>Montant / Frais</th>
+                    <th>Valeur</th>
+                    <th>Frais</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +27,8 @@
                     <tr>
                         <td><?= esc($t['created_at']) ?></td>
                         <td><?= esc($t['typeNom'] ?? '—') ?></td>
-                        <td><?= number_format((float) $t['gain'], 0, ',', ' ') ?> Ar</td>
+                        <td><?= number_format((float) $t['valeur'], 0, ',', ' ') ?> Ar</td>
+                        <td><?= number_format((float) $t['frais'], 0, ',', ' ') ?> Ar</td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
