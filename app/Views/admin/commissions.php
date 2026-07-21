@@ -43,9 +43,4 @@
     </div>
 </div>
 
-<p class="text-muted mt-3" style="font-size: 13px;">
-    Pour un transfert de <strong>montant</strong> Ar vers cet opérateur, la commission appliquée est :
-    <code>commission fixe + (montant × pourcentage / 100)</code>.
-</p>
-
 <?= $this->endSection() ?>

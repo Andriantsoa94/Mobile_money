@@ -12,10 +12,6 @@
     <h2>Transfert vers plusieurs numéros</h2>
 
     <p>Solde actuel : <strong><?= number_format((float) $solde, 0, ',', ' ') ?> Ar</strong></p>
-    <p class="text-muted" style="font-size: 14px;">
-        Le montant total saisi ci-dessous sera divisé équitablement entre tous les
-        numéros renseignés. Tous les numéros doivent appartenir au même opérateur.
-    </p>
 
     <div id="messageOperateur">
         Attention : les numéros saisis ne sont pas tous du même opérateur.
@@ -36,7 +32,6 @@
             foreach ($numerosSaisis as $i => $numeroSaisi):
             ?>
                 <div class="ligneNumero">
-                    <span class="numeroLigne">#<?= $i + 1 ?></span>
                     <div class="form-group">
                         <label>Numéro du destinataire</label>
                         <input type="text" name="numero[]" class="champNumero" placeholder="0331234567"
