@@ -10,9 +10,6 @@ class ConfigBaremeSeeder extends Seeder
     {
         $maintenant = date('Y-m-d H:i:s');
 
-        // "gain" est laisse a 0 par defaut : aucune valeur de gain n'a ete
-        // fournie pour l'instant. A ajuster via l'interface admin
-        // (/admin/config) une fois les montants de gain decides.
         $tranches = [
             ['min' => 100,      'max' => 1000,    'frais' => 50,   'gain' => 0],
             ['min' => 1001,     'max' => 5000,    'frais' => 50,   'gain' => 0],

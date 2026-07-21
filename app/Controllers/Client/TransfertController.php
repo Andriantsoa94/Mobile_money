@@ -10,6 +10,7 @@ use App\Models\PrefixeModel;
 use App\Models\SoldeModel;
 use App\Models\TransactionModel;
 use App\Models\TypeOperationModel;
+use App\Models\PromotionModel;
 use RuntimeException;
 
 class TransfertController extends BaseController
@@ -32,6 +33,7 @@ class TransfertController extends BaseController
         $soldeModel       = new SoldeModel();
         $transactionModel = new TransactionModel();
         $commissionModel  = new CommissionModel();
+        $promotionModel = new PromotionModel();
 
         $idUser       = session()->get('user_id');
         $numeroDest   = trim((string) $this->request->getPost('numero'));
@@ -58,8 +60,12 @@ class TransfertController extends BaseController
 
         if ($estChezNous) {
             $tranche    = $configModel->trancheDe($montantSaisi);
-            $frais      = (float) ($tranche['frais'] ?? 0);
-            $gain       = (float) ($tranche['gain'] ?? 0);
+            $fraiss      = (float) ($tranche['frais'] ?? 0);
+            $gainn       = (float) ($tranche['gain'] ?? 0);
+            $promo = $promotionModel->augProm($fraiss);
+            $gai = $promotionModel->augProm($gainn);
+            $frais = (float) $fraiss - $promo; 
+            $gain = (float) $gainn - $gai;
             $commission = 0.0;
         } else {
             $frais      = 0.0;
