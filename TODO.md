@@ -133,3 +133,15 @@ mvola-app/
 ├── tests/
 ├── writable/
 └── .env
+
+
+## EPARGNE
+
+* Par pourcentage ex 20%
+* Rehefa mis6y transfert tonga any aminy dia 20% Epargne 80% vers la compte principale
+
+- [ ] Page pour entrer le pourcentage de l'epargne
+- [ ] Base : 
+  - [x] table : epargne (idClient , pourcentage , montantTotal)
+  - [ ] donnee : 
+- [ ] Logique metier lors de transfert : separer les enregistrements (Epargne et Compte principale) 

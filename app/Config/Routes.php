@@ -21,6 +21,7 @@ $routes->group('client', ['filter' => 'role:client'], function ($routes) {
     $routes->get('transfert/multiple', 'Client\TransfertController::multiple');
     $routes->post('transfert/multiple', 'Client\TransfertController::storeMultiple');
     $routes->get('historique', 'Client\HistoriqueController::index');
+    $routes->get('epargne', 'Client\EpargneController::index');
 });
 
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {

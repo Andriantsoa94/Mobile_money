@@ -14,6 +14,7 @@
             <a href="/client/retrait" class="btn">Retrait</a>
             <a href="/client/transfert" class="btn">Transfert</a>
             <a href="/client/historique" class="btn">Historique</a>
+            <a href="/client/epargne" class="btn">Epargne</a>
         </div>
 
         <h3>Dernières transactions</h3>
