@@ -19,6 +19,10 @@ class CreateOperateurTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'appartenance' => [
+                'type'       => 'INT',
+                'null'       => false,
+            ],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);

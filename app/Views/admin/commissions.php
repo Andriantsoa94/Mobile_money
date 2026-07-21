@@ -16,7 +16,6 @@
                     <thead>
                         <tr>
                             <th>Opérateur</th>
-                            <th class="text-end">Commission fixe</th>
                             <th class="text-end">Pourcentage</th>
                             <th class="text-end">Actions</th>
                         </tr>
@@ -25,7 +24,6 @@
                         <?php foreach ($commissions as $c): ?>
                             <tr>
                                 <td><?= esc($c['operateurNom'] ?? '—') ?></td>
-                                <td class="text-end"><?= number_format((float) $c['commission'], 0, ',', ' ') ?> Ar</td>
                                 <td class="text-end"><?= number_format((float) $c['pourcentage'], 2, ',', ' ') ?> %</td>
                                 <td class="text-end">
                                     <a href="/admin/commissions/<?= (int) $c['id'] ?>/modifier" class="btn btn-sm btn-outline-secondary">Modifier</a>

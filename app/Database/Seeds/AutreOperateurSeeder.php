@@ -13,6 +13,7 @@ class AutreOperateurSeeder extends Seeder
         // Un autre opérateur (ne nous appartient pas)
         $this->db->table('operateur')->insert([
             'nom'        => 'Orange',
+            'appartenance' => 0,
             'created_at' => $now,
             'updated_at' => $now,
         ]);
@@ -30,7 +31,6 @@ class AutreOperateurSeeder extends Seeder
         // Commission appliquée pour tout transfert vers cet opérateur
         $this->db->table('comission')->insert([
             'idOperateur' => $idAutre,
-            'commission'  => 100,
             'created_at'  => $now,
             'updated_at'  => $now,
         ]);

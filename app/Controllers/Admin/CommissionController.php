@@ -21,7 +21,7 @@ class CommissionController extends BaseController
     {
         return view('admin/commissionForm', [
             'commission' => null,
-            'operateurs' => (new OperateurModel())->orderBy('nom', 'ASC')->findAll(),
+            'operateurs' => (new OperateurModel())->orderBy('nom', 'ASC')->listeAutreOperateurSansCommission(),
         ]);
     }
 
@@ -76,7 +76,6 @@ class CommissionController extends BaseController
     {
         return [
             'idOperateur' => (int) $this->request->getPost('idOperateur') ?: null,
-            'commission'  => (float) $this->request->getPost('commission'),
             'pourcentage' => (float) $this->request->getPost('pourcentage'),
         ];
     }
@@ -85,9 +84,6 @@ class CommissionController extends BaseController
     {
         if (empty($donnees['idOperateur'])) {
             return 'Veuillez sélectionner un opérateur.';
-        }
-        if ($donnees['commission'] < 0 || $donnees['pourcentage'] < 0) {
-            return 'La commission et le pourcentage ne peuvent pas être négatifs.';
         }
         if ($donnees['pourcentage'] > 100) {
             return 'Le pourcentage ne peut pas dépasser 100.';

@@ -21,7 +21,7 @@ class CreateCommissionTable extends Migration
                 'unsigned'   => true,
                 'null'       => true,
             ],
-            'commission' => [
+            'pourcentage' => [
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
                 'default'    => 0.00,

@@ -19,7 +19,7 @@ class AdminUserSeeder extends Seeder
         $idRoleClient = $this->db->table('role')->where('type', 'client')->get()->getRowArray()['id'];
 
         $this->db->table('operateur')->insertBatch([
-            ['nom' => 'Telma', 'created_at' => $now, 'updated_at' => $now],
+            ['nom' => 'Telma','appartenance' => 1, 'created_at' => $now, 'updated_at' => $now],
         ]);
         $idOperateur = $this->db->table('operateur')->where('nom', 'Telma')->get()->getRowArray()['id'];
 

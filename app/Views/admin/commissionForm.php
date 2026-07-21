@@ -29,11 +29,6 @@ $titre      = $estEdition ? 'Modifier la commission' : 'Nouvelle commission';
 
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="commission" class="form-label">Commission fixe (Ar)</label>
-                    <input type="number" step="0.01" min="0" class="form-control" name="commission" id="commission"
-                           value="<?= esc(old('commission', $commission['commission'] ?? '0')) ?>" required>
-                </div>
-                <div class="col-md-6">
                     <label for="pourcentage" class="form-label">Pourcentage en plus (%)</label>
                     <input type="number" step="0.01" min="0" max="100" class="form-control" name="pourcentage" id="pourcentage"
                            value="<?= esc(old('pourcentage', $commission['pourcentage'] ?? '0')) ?>" required>
